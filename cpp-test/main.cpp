@@ -17,28 +17,36 @@ bool isPrime(int n) {
 
 int* primeGenerator(int n) {
     int i = 0;
-    int found_primes = 0;
     int test_number  = 2;
 
-    int prime_array[n];
+    int * prime_array = new int[n];
     
-    while (found_primes < n) {
+    while (i < n) {
         if (isPrime(test_number) == true) {
             prime_array[i] = test_number;
+            i++;
         }
-        i++;
         test_number++;
     }
     return prime_array;
 }
 
+int* testFunction() {
+
+    int * arr = new int[5];
+    for (int i = 0; i < 4; i++)
+    {
+        arr[i] = 1;
+    }
+    return arr;
+}
+
 int main() {
 
-    int* array;
-    array = primeGenerator(10);
-    for (int i = 0; i < 10; i++)
+    int * test = primeGenerator(5);
+    for (int i = 0; i < 5; i++)
     {
-        cout << array[0] << endl;
+        cout << test[i] << endl;
     }
     
     return 0;
