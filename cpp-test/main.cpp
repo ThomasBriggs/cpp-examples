@@ -19,6 +19,7 @@ namespace prime {
     }
 
     int* primeGenerator(int n, int start_num=2) {
+
         int i = 0;
         int test_number = start_num;
 
@@ -43,24 +44,30 @@ namespace prime {
     }
 };
 
-int* testFunction() {
-
-    int * arr = new int[5];
-    for (int i = 0; i < 4; i++)
-    {
-        arr[i] = 1;
+int fib(int n) {
+    int num = 1;
+    int prev_num = 0;
+    while (n > 0) {
+        int temp = num;
+        num = num+prev_num;
+        prev_num = temp;
+        n--;
     }
-    return arr;
+    return prev_num;
 }
+
+int recFib(int n, int num = 0) {
+    if (n == 0) {
+        return 0;
+    }else {
+        return num + recFib(n-1);
+    }
+}
+
 
 int main() {
 
-    int arr[10];
-
-    int * arr_pointer = prime::primeGenerator(10);
-
-    cout << "length arr: " << sizeof(arr)/sizeof(arr[0]) << endl;
-    cout << "length arr_pointer: " << sizeof(arr_pointer)/sizeof(arr_pointer[0]) << endl;
+    cout << recFib(10) << endl;
     
     return 0;
 }
