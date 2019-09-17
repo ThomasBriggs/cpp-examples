@@ -18,7 +18,7 @@ namespace prime {
         return true;
     }
 
-    int* primeGenerator(int n, int start_num) {
+    int* primeGenerator(int n, int start_num=2) {
         int i = 0;
         int test_number = start_num;
 
@@ -35,7 +35,7 @@ namespace prime {
     }
 
     void printPrimes(int n) {
-        int * output = primeGenerator(n, 2);
+        int * output = primeGenerator(n);
         for (int i = 0; i < n; i++)
         {
             cout << output[i] << endl;
@@ -55,19 +55,12 @@ int* testFunction() {
 
 int main() {
 
-    time_t start, end;
-    start = clock();
-    int * primes = prime::primeGenerator(100, 10000000);
-    for (int i = 0; i < 20; i++)
-    {
-        cout << primes[i] << endl;
-    }
-    
-    end = clock();
+    int arr[10];
 
-    double time_taken = double(end-start)/double(CLOCKS_PER_SEC);
-    cout << "Time " << fixed << time_taken; 
-    cout << endl;
+    int * arr_pointer = prime::primeGenerator(10);
+
+    cout << "length arr: " << sizeof(arr)/sizeof(arr[0]) << endl;
+    cout << "length arr_pointer: " << sizeof(arr_pointer)/sizeof(arr_pointer[0]) << endl;
     
     return 0;
 }
