@@ -3,9 +3,9 @@
 
 using namespace std;
 
-class Prime {
-    public:
-       bool isPrime(int n) {
+namespace prime {
+
+    bool isPrime(int n) {
     
         int n_counter = n/2;
 
@@ -16,9 +16,9 @@ class Prime {
             n_counter--; 
         }
         return true;
-        }
+    }
 
-        int* primeGenerator(int n) {
+    int* primeGenerator(int n) {
         int i = 0;
         int test_number  = 2;
 
@@ -32,7 +32,15 @@ class Prime {
             test_number++;
         }
         return prime_array;
-        } 
+    }
+
+    void printPrimes(int n) {
+        int * output = primeGenerator(n);
+        for (int i = 0; i < n; i++)
+        {
+            cout << output[i] << endl;
+        }
+    }
 };
 
 int* testFunction() {
@@ -47,12 +55,14 @@ int* testFunction() {
 
 int main() {
 
-    Prime prime;
-    int * test = prime.primeGenerator(5);
-    for (int i = 0; i < 5; i++)
-    {
-        cout << test[i] << endl;
-    }
+    time_t start, end;
+    start = clock();
+    prime::printPrimes(10000);
+    end = clock();
+
+    double time_taken = double(end-start)/double(CLOCKS_PER_SEC);
+    cout << "Time " << fixed << time_taken; 
+    cout << endl;
     
     return 0;
 }
