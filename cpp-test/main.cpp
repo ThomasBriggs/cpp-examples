@@ -57,7 +57,7 @@ int main() {
 
     time_t start, end;
     start = clock();
-    prime::printPrimes(10000);
+    prime::primeGenerator(10000);
     end = clock();
 
     double time_taken = double(end-start)/double(CLOCKS_PER_SEC);
