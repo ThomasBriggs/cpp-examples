@@ -52,16 +52,17 @@ namespace sort {
 }
 
 using namespace fib;
+using namespace std;
 
 
 int main() {
-    std::vector<int> arr = primeGenerator(100);
+    vector<int> arr = primeGenerator(100);
     for (size_t i = 0; i < arr.size(); i++)
     {
-        std::cout << arr[i] << ",";
+        cout << arr[i] << ",";
     }
-    std::cout << std::endl;
+    cout << std::endl;
 
-    std::cout << fibGen(5) << std::endl;
+    cout << fibGen(5) << std::endl;
     
 }
