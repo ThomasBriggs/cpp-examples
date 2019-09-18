@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -18,12 +19,10 @@ namespace prime {
         return true;
     }
 
-    int* primeGenerator(int n, int start_num=2) {
-
+    vector<int> primeGenerator(int n, int start_num=2) {
+        vector<int> prime_array(n);
         int i = 0;
         int test_number = start_num;
-
-        int * prime_array = new int[n];
         
         while (i < n) {
             if (isPrime(test_number) == true) {
@@ -36,7 +35,7 @@ namespace prime {
     }
 
     void printPrimes(int n) {
-        int * output = primeGenerator(n);
+        vector<int> output = primeGenerator(n);
         for (int i = 0; i < n; i++)
         {
             cout << output[i] << endl;
@@ -69,7 +68,7 @@ namespace fib {
 
 namespace sort {
 
-    void bubbleSort(int * sort_array, int length) {
+    void bubbleSort(int sort_array[], int length) {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length - 1 - i; j++) {
                 if (sort_array[j] > sort_array[j+1]) {
@@ -80,16 +79,18 @@ namespace sort {
             }      
         }    
     }
+
+    void insertionSort(int sort_array[], int length) {
+        for (int i = 1; i < length; i++)
+        {
+            while (sort_array[i] < sort_array[i-1]) {
+
+            }
+        }
+        
+    }
 }
 
 int main() {
-
-    int arr[] = {5,2,6,4,9,11,3,54,84,95,12,45};
-    int arr_length = sizeof(arr)/sizeof(arr[0]);
-    sort::bubbleSort(arr, sizeof(arr)/sizeof(arr[0]));
-    for (int i = 0; i < arr_length; i++) {
-        cout << arr[i] << ", ";
-    }
-    cout << endl;
-    return 0;
+    prime::primeGenerator(100000);
 }
