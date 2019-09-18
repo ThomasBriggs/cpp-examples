@@ -61,8 +61,9 @@ int main() {
     {
         cout << arr[i] << ",";
     }
-    cout << std::endl;
+    cout << endl;
 
-    cout << fibGen(5) << std::endl;
+    cout << fibGen(5) << endl;
+    cout << fibGen(10) << endl;
     
 }
