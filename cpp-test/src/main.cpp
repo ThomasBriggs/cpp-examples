@@ -1,47 +1,7 @@
 
 #include <iostream>
 #include <vector>
-
-using namespace std;
-
-namespace prime {
-
-    bool isPrime(int n) {
-    
-        int n_counter = n/2;
-
-        while (n_counter > 1) {
-            if ((n % n_counter) == 0) {
-                return false;
-            }
-            n_counter--; 
-        }
-        return true;
-    }
-
-    vector<int> primeGenerator(int n, int start_num=2) {
-        vector<int> prime_array(n);
-        int i = 0;
-        int test_number = start_num;
-        
-        while (i < n) {
-            if (isPrime(test_number) == true) {
-                prime_array[i] = test_number;
-                i++;
-            }
-            test_number++;
-        }
-        return prime_array;
-    }
-
-    void printPrimes(int n) {
-        vector<int> output = primeGenerator(n);
-        for (int i = 0; i < n; i++)
-        {
-            cout << output[i] << endl;
-        }
-    }
-};
+#include "sort.h"
 
 namespace fib {
     
@@ -91,6 +51,17 @@ namespace sort {
     }
 }
 
+using namespace fib;
+
+
 int main() {
-    prime::primeGenerator(100000);
+    std::vector<int> arr = primeGenerator(100);
+    for (size_t i = 0; i < arr.size(); i++)
+    {
+        std::cout << arr[i] << ",";
+    }
+    std::cout << std::endl;
+
+    std::cout << fibGen(5) << std::endl;
+    
 }
