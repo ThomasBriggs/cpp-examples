@@ -45,6 +45,7 @@ namespace prime {
 };
 
 namespace fib {
+    
     int fibGen(int n) {
         int num = 1;
         int prev_num = 0;
@@ -66,9 +67,29 @@ namespace fib {
     }
 }
 
+namespace sort {
+
+    void bubbleSort(int * sort_array, int length) {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length - 1 - i; j++) {
+                if (sort_array[j] > sort_array[j+1]) {
+                    int temp = sort_array[j];
+                    sort_array[j] = sort_array[j+1];
+                    sort_array[j+1] = temp;
+                }
+            }      
+        }    
+    }
+}
+
 int main() {
 
-    cout << fib::recFibGen(10) << endl;
-    
+    int arr[] = {5,2,6,4,9,11,3,54,84,95,12,45};
+    int arr_length = sizeof(arr)/sizeof(arr[0]);
+    sort::bubbleSort(arr, sizeof(arr)/sizeof(arr[0]));
+    for (int i = 0; i < arr_length; i++) {
+        cout << arr[i] << ", ";
+    }
+    cout << endl;
     return 0;
 }
