@@ -44,30 +44,31 @@ namespace prime {
     }
 };
 
-int fib(int n) {
-    int num = 1;
-    int prev_num = 0;
-    while (n > 0) {
-        int temp = num;
-        num = num+prev_num;
-        prev_num = temp;
-        n--;
+namespace fib {
+    int fibGen(int n) {
+        int num = 1;
+        int prev_num = 0;
+        while (n > 0) {
+            int temp = num;
+            num = num+prev_num;
+            prev_num = temp;
+            n--;
+        }
+        return prev_num;
     }
-    return prev_num;
-}
 
-int recFib(int n) {
-    if (n < 2) {
-        return n;
-    }else {
-        return recFib(n-2)+ recFib(n-1);
+    int recFibGen(int n) {
+        if (n < 2) {
+            return n;
+        }else {
+            return recFibGen(n-2)+ recFibGen(n-1);
+        }
     }
 }
-
 
 int main() {
 
-    cout << recFib(5) << endl;
+    cout << fib::recFibGen(10) << endl;
     
     return 0;
 }
