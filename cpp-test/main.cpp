@@ -56,18 +56,18 @@ int fib(int n) {
     return prev_num;
 }
 
-int recFib(int n, int num = 0) {
-    if (n == 0) {
-        return 0;
+int recFib(int n) {
+    if (n < 2) {
+        return n;
     }else {
-        return num + recFib(n-1);
+        return recFib(n-2)+ recFib(n-1);
     }
 }
 
 
 int main() {
 
-    cout << recFib(10) << endl;
+    cout << recFib(5) << endl;
     
     return 0;
 }
