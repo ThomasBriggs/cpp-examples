@@ -1,29 +1,25 @@
-#include <vector>
+namespace sort
+{
 
-bool isPrime(int n) {
-    
-    int n_counter = n/2;
-
-    while (n_counter > 1) {
-        if ((n % n_counter) == 0) {
-            return false;
-        }
-        n_counter--; 
+    void bubbleSort(int sort_array[], int length) {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length - 1 - i; j++) {
+                if (sort_array[j] > sort_array[j+1]) {
+                    int temp = sort_array[j];
+                    sort_array[j] = sort_array[j+1];
+                    sort_array[j+1] = temp;
+                }
+            }      
+        }    
     }
-    return true;
-}
 
-std::vector<int> primeGenerator(int n, int start_num=2) {
-    std::vector<int> prime_array(n);
-    int i = 0;
-    int test_number = start_num;
+    void insertionSort(int sort_array[], int length) {
+        for (int i = 1; i < length; i++)
+        {
+            while (sort_array[i] < sort_array[i-1]) {
+
+            }
+        }
         
-    while (i < n) {
-        if (isPrime(test_number) == true) {
-            prime_array[i] = test_number;
-            i++;
-        }
-        test_number++;
     }
-    return prime_array;
 }
