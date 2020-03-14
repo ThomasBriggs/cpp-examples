@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-int recFib(int n)
+unsigned long long recFib(unsigned long long n)
 {
     if (n == 0 || n == 1)
     {
@@ -12,7 +12,6 @@ int recFib(int n)
         return recFib(n - 1) + recFib(n - 2);
     }
 }
-
 int main(int argc, char const *argv[])
 {
     std::cout << recFib(std::stoi(argv[1])) << std::endl;
