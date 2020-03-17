@@ -14,6 +14,7 @@ unsigned long long recFib(unsigned long long n)
 }
 int main(int argc, char const *argv[])
 {
-    std::cout << recFib(std::stoi(argv[1])) << std::endl;
+    using namespace std;
+    cout << recFib(stoi(argv[1])) << endl;
     return 0;
 }
