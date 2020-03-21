@@ -3,38 +3,36 @@
 
 using namespace std;
 
-void quickSort(int array[], int start, int end)
+void partition(int array[], int left, int right, int pivot)
 {
-
-    if (start < end)
+    while (left != right)
     {
 
-        int left = start;
-        int right = end;
-        int length = start + end;
-        int pivot = length / 2;
-
-        while (left != right)
+        while (array[left] < array[pivot])
         {
-
-            left = start;
-            right = end;
-
-            while (array[left] < array[pivot])
-            {
-                left++;
-            }
-
-            while (array[right] > array[pivot])
-            {
-                right--;
-            }
-
-            int temp = array[left];
-            array[left] = array[right];
-            array[right] = temp;
+            left++;
         }
 
+        while (array[right] > array[pivot])
+        {
+            right--;
+        }
+
+        int temp = array[left];
+        array[left] = array[right];
+        array[right] = temp;
+    }
+}
+
+void quickSort(int array[], int start, int end)
+{
+    int length = end - start;
+    int pivot = (start + end) / 2;
+
+    partition(array, start, end, pivot);
+
+    if (length > 2)
+    {
         quickSort(array, start, pivot - 1);
         quickSort(array, pivot + 1, end);
     }
@@ -47,14 +45,23 @@ void quickSort(int array[], int length)
 
 int main(int argc, char const *argv[])
 {
-    int length = 50;
+    int length = 25;
     int testArray[length];
     for (int i = 0; i < length; i++)
     {
-        testArray[i] = rand() % 1000;
+        testArray[i] = length - i;
     }
 
+    cout << "Before" << endl;
+    for (auto &&i : testArray)
+    {
+        cout << i << ", ";
+    }
+    cout << endl;
+
     quickSort(testArray, length);
+
+    cout << "After" << endl;
     for (auto &&i : testArray)
     {
         cout << i << ", ";
