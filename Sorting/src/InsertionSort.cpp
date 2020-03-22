@@ -49,8 +49,13 @@ int main(int argc, char const *argv[])
         amount = stoi(argv[1]);
     }
     int arr[amount];
+
     fillRandom(arr, amount);
     int length = sizeof(arr) / sizeof(*arr);
+
     InsertionSort(arr, length);
+
+    print(arr, amount);
+
     return 0;
 }

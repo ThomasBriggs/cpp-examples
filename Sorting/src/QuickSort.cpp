@@ -66,9 +66,11 @@ int main(int argc, char const *argv[])
     {
         amount = stoi(argv[1]);
     }
-    int arr[amount];
+    int *arr = new int[amount];
     fillRandom(arr, amount);
     int length = sizeof(arr) / sizeof(*arr);
+
     QuickSort(arr, length);
+
     return 0;
 }
