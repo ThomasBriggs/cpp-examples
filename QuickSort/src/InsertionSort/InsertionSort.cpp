@@ -18,25 +18,23 @@ void print(int *arr, int length)
 
 void InsertionSort(int *arr, int length)
 {
-
-    
+    for (int i = 1; i < length; i++)
+    {
+        int j = i;
+        while (j > 0 && arr[j] < arr[j - 1])
+        {
+            swap(arr, j, j - 1);
+            j--;
+        }
+    }
 }
 
 int main(int argc, char const *argv[])
 {
     using namespace std;
 
-    int arr[] = {1, 8, 95, 27, 197, 166, 180, 34, 7, 41, 88, 174, 29, 3, 161, 66, 129, 192, 54, 127};
+    int arr[] = {};
     int length = sizeof(arr) / sizeof(*arr);
-
-    cout << "Unsorted:" << endl;
-    print(arr, length);
-
-    cout << endl;
-
     InsertionSort(arr, length);
-
-    cout << "Sorted:" << endl;
-    print(arr, length);
     return 0;
 }

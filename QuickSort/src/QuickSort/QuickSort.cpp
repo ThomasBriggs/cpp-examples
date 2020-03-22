@@ -16,7 +16,7 @@ void print(int *arr, int length)
     std::cout << std::endl;
 }
 
-int partition(int* arr, int start, int end)
+int partition(int *arr, int start, int end)
 {
     int pivot = arr[end];
     int wall = start;
@@ -30,7 +30,6 @@ int partition(int* arr, int start, int end)
     }
     swap(arr, wall, end);
     return wall;
-    
 }
 
 void QuickSort(int *arr, int start, int end)
@@ -52,17 +51,8 @@ int main(int argc, char const *argv[])
 {
     using namespace std;
 
-    int arr[] = {1, 8, 95, 27, 197, 166, 180, 34, 7, 41, 88, 174, 29, 3, 161, 66, 129, 192, 54, 127};
+    int arr[] = {};
     int length = sizeof(arr) / sizeof(*arr);
-
-    cout << "Unsorted:" << endl;
-    print(arr, length);
-
-    cout << endl;
-
     QuickSort(arr, length);
-
-    cout << "Sorted:" << endl;
-    print(arr, length);
     return 0;
 }
