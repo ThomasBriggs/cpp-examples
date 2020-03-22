@@ -29,7 +29,7 @@ void print(int *arr, int length)
 
 void Merge(int *arr, int start, int middle, int end)
 {
-    int length = start + end + 1;
+    int length = end - start + 1;
     int temp[length];
     int left = start;
     int right = middle + 1;
@@ -89,10 +89,11 @@ void MergeSort(int *arr, int start, int end)
 
 int main(int argc, char const *argv[])
 {
-    int arr[] = {8, 6, 4, 1};
+    int arr[] = {849, 727, 751, 903, 996, 584, 883, 214, 763, 644, 139, 792, 116, 437, 59, 389, 40, 577, 669, 68, 695, 128, 473, 863, 896, 683, 572, 477, 137, 41, 687, 986, 121, 438, 241, 117, 374, 477, 331, 490, 121, 822, 634, 238, 260, 693, 979, 652, 622, 0, 721, 317, 129, 546, 532, 25, 229, 104, 502, 719, 498, 542, 57, 619, 332, 299, 736, 707, 776, 419, 549, 249, 241, 183, 839, 853, 228, 819, 506, 850, 819, 579, 167, 300, 125, 699, 678, 706, 156, 532, 777, 654, 74, 835, 273, 407, 486, 361, 466, 614};
     int length = sizeof(arr) / sizeof(*arr);
 
-    Merge(arr, 2, 3, 2);
+    MergeSort(arr, 0, length - 1);
+
     print(arr, length);
 
     return 0;
