@@ -1,4 +1,15 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+void fillRandom(int *arr, int amount)
+{
+    srand((unsigned)time(0));
+    for (size_t i = 0; i < amount; i++)
+    {
+        arr[i] = rand() % (amount * 10);
+    }
+}
 
 void swap(int *arr, int index1, int index2)
 {
@@ -50,8 +61,13 @@ void QuickSort(int *arr, int length)
 int main(int argc, char const *argv[])
 {
     using namespace std;
-
-    int arr[] = {};
+    int amount = 100;
+    if (argc == 2)
+    {
+        amount = stoi(argv[1]);
+    }
+    int arr[amount];
+    fillRandom(arr, amount);
     int length = sizeof(arr) / sizeof(*arr);
     QuickSort(arr, length);
     return 0;
