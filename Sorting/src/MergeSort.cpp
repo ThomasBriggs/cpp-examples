@@ -69,7 +69,8 @@ void Merge(int *arr, int start, int middle, int end)
 
     for (int i = 0; i < length; i++)
     {
-        arr[i] = temp[i];
+        arr[start] = temp[i];
+        start++;
     }
 }
 
@@ -78,8 +79,10 @@ void MergeSort(int *arr, int start, int end)
     if (end > start)
     {
         int middle = (start + end) / 2;
+
         MergeSort(arr, start, middle);
         MergeSort(arr, middle + 1, end);
+
         Merge(arr, start, middle, end);
     }
 }
@@ -88,8 +91,9 @@ int main(int argc, char const *argv[])
 {
     int arr[] = {8, 6, 4, 1};
     int length = sizeof(arr) / sizeof(*arr);
-    int middle = (length - 1) / 2;
-    MergeSort(arr, 0, length - 1);
+
+    Merge(arr, 2, 3, 2);
     print(arr, length);
+
     return 0;
 }
