@@ -1,24 +1,5 @@
+#include "Utility.h"
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-
-void fillRandom(int *arr, int amount)
-{
-    srand((unsigned)time(0));
-    for (size_t i = 0; i < amount; i++)
-    {
-        arr[i] = rand() % (amount * 10);
-    }
-}
-
-void print(int *arr, int length)
-{
-    for (size_t i = 0; i < length; i++)
-    {
-        std::cout << arr[i] << ", ";
-    }
-    std::cout << std::endl;
-}
 
 void Merge(int *arr, int start, int middle, int end)
 {
@@ -95,11 +76,11 @@ int main(int argc, char const *argv[])
 
     int *arr = new int[amount];
 
-    fillRandom(arr, amount);
+    Utility::fillRandom(arr, amount);
 
     MergeSort(arr, amount);
 
-    print(arr, amount);
+    Utility::print(arr, amount);
 
     return 0;
 }
