@@ -11,13 +11,6 @@ void fillRandom(int *arr, int amount)
     }
 }
 
-void swap(int *arr, int index1, int index2)
-{
-    int temp = arr[index1];
-    arr[index1] = arr[index2];
-    arr[index2] = temp;
-}
-
 void print(int *arr, int length)
 {
     for (size_t i = 0; i < length; i++)
@@ -82,6 +75,11 @@ void MergeSort(int *arr, int start, int end)
     }
 }
 
+void MergeSort(int *arr, int length)
+{
+    MergeSort(arr, 0, length - 1);
+}
+
 int main(int argc, char const *argv[])
 {
     int amount;
@@ -99,7 +97,7 @@ int main(int argc, char const *argv[])
 
     fillRandom(arr, amount);
 
-    MergeSort(arr, 0, amount - 1);
+    MergeSort(arr, amount);
 
     print(arr, amount);
 
