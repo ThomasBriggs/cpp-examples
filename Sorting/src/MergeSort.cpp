@@ -50,21 +50,16 @@ void Merge(int *arr, int start, int middle, int end)
         i++;
     }
 
-    if (left > middle)
+    while (left <= middle)
     {
-        for (i; i < length; i++)
-        {
-            temp[i] = arr[right];
-            right++;
-        }
+        temp[i] = arr[left];
+        left++, i++;
     }
-    else
+
+    while (right <= end)
     {
-        for (i; i < length; i++)
-        {
-            temp[i] = arr[left];
-            left++;
-        }
+        temp[i] = arr[right];
+        right++, i++;
     }
 
     for (int i = 0; i < length; i++)
@@ -104,9 +99,9 @@ int main(int argc, char const *argv[])
 
     fillRandom(arr, amount);
 
-    int length = sizeof(arr) / sizeof(*arr);
+    MergeSort(arr, 0, amount - 1);
 
-    MergeSort(arr, 0, length - 1);
+    print(arr, amount);
 
     return 0;
 }
