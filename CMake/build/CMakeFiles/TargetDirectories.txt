@@ -1,0 +1,4 @@
+/home/thomas/Documents/cpp-examples/CMake/build/CMakeFiles/edit_cache.dir
+/home/thomas/Documents/cpp-examples/CMake/build/CMakeFiles/cmake-test.dir
+/home/thomas/Documents/cpp-examples/CMake/build/CMakeFiles/rebuild_cache.dir
+/home/thomas/Documents/cpp-examples/CMake/build/CMakeFiles/say-hello.dir
