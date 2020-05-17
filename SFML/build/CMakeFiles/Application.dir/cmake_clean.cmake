@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "Application"
-  "Application.pdb"
+  "../bin/Application"
+  "../bin/Application.pdb"
   "CMakeFiles/Application.dir/src/main.cpp.o"
 )
 

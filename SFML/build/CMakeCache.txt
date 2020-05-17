@@ -209,12 +209,6 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//Value Computed by CMake
-SFMLTest_BINARY_DIR:STATIC=/home/thomas/Documents/cpp-examples/SFML/build
-
-//Value Computed by CMake
-SFMLTest_SOURCE_DIR:STATIC=/home/thomas/Documents/cpp-examples/SFML
-
 //The directory containing a CMake configuration file for SFML.
 SFML_DIR:PATH=/usr/local/lib/cmake/SFML
 
