@@ -1,4 +1,0 @@
-/home/thomas/Documents/cpp-examples/SFML/build/CMakeFiles/rebuild_cache.dir
-/home/thomas/Documents/cpp-examples/SFML/build/CMakeFiles/edit_cache.dir
-/home/thomas/Documents/cpp-examples/SFML/build/CMakeFiles/Test.dir
-/home/thomas/Documents/cpp-examples/SFML/build/CMakeFiles/Application.dir
