@@ -60,15 +60,15 @@ include CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/src/main.cpp.o: CMakeFiles/Application.dir/flags.make
 CMakeFiles/Application.dir/src/main.cpp.o: ../src/main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thomas/Documents/cpp-examples/SFML/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Application.dir/src/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Application.dir/src/main.cpp.o -c /home/thomas/Documents/cpp-examples/SFML/src/main.cpp
+	/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Application.dir/src/main.cpp.o -c /home/thomas/Documents/cpp-examples/SFML/src/main.cpp
 
 CMakeFiles/Application.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Application.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thomas/Documents/cpp-examples/SFML/src/main.cpp > CMakeFiles/Application.dir/src/main.cpp.i
+	/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thomas/Documents/cpp-examples/SFML/src/main.cpp > CMakeFiles/Application.dir/src/main.cpp.i
 
 CMakeFiles/Application.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Application.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thomas/Documents/cpp-examples/SFML/src/main.cpp -o CMakeFiles/Application.dir/src/main.cpp.s
+	/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thomas/Documents/cpp-examples/SFML/src/main.cpp -o CMakeFiles/Application.dir/src/main.cpp.s
 
 # Object files for target Application
 Application_OBJECTS = \

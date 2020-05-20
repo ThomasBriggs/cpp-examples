@@ -60,15 +60,15 @@ include CMakeFiles/Test.dir/flags.make
 CMakeFiles/Test.dir/src/test.cpp.o: CMakeFiles/Test.dir/flags.make
 CMakeFiles/Test.dir/src/test.cpp.o: ../src/test.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/thomas/Documents/cpp-examples/SFML/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Test.dir/src/test.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Test.dir/src/test.cpp.o -c /home/thomas/Documents/cpp-examples/SFML/src/test.cpp
+	/bin/g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Test.dir/src/test.cpp.o -c /home/thomas/Documents/cpp-examples/SFML/src/test.cpp
 
 CMakeFiles/Test.dir/src/test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Test.dir/src/test.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thomas/Documents/cpp-examples/SFML/src/test.cpp > CMakeFiles/Test.dir/src/test.cpp.i
+	/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/thomas/Documents/cpp-examples/SFML/src/test.cpp > CMakeFiles/Test.dir/src/test.cpp.i
 
 CMakeFiles/Test.dir/src/test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Test.dir/src/test.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thomas/Documents/cpp-examples/SFML/src/test.cpp -o CMakeFiles/Test.dir/src/test.cpp.s
+	/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/thomas/Documents/cpp-examples/SFML/src/test.cpp -o CMakeFiles/Test.dir/src/test.cpp.s
 
 # Object files for target Test
 Test_OBJECTS = \

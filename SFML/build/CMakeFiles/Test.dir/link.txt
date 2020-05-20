@@ -1,1 +1,1 @@
-/usr/bin/c++    -rdynamic CMakeFiles/Test.dir/src/test.cpp.o  -o ../bin/Test  -Wl,-rpath,/usr/local/lib /usr/local/lib/libsfml-graphics.so.2.5.1 /usr/local/lib/libsfml-window.so.2.5.1 /usr/local/lib/libsfml-system.so.2.5.1 
+/bin/g++-9    -rdynamic CMakeFiles/Test.dir/src/test.cpp.o  -o ../bin/Test  -Wl,-rpath,/usr/local/lib /usr/local/lib/libsfml-graphics.so.2.5.1 /usr/local/lib/libsfml-window.so.2.5.1 /usr/local/lib/libsfml-system.so.2.5.1 
