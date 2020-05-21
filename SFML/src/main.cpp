@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include "Ball.h"
 
 int main()
 {
@@ -27,7 +28,7 @@ int main()
     yLine.setPosition(window.getSize().x / 2, 0);
 
     sf::Font font;
-    font.loadFromFile("fonts/OpenSans-Regular.ttf");
+    font.loadFromFile("..\\fonts\\OpenSans-Regular.ttf");
 
     sf::Text mouseCoords;
     mouseCoords.setFont(font);
@@ -66,6 +67,7 @@ int main()
         window.draw(mouseCoords);
         window.draw(pointerCoords);
         window.display();
+
     }
 
     return 0;
