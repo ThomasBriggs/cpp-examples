@@ -41,7 +41,7 @@ int main()
 	pointerCoords.setPosition(0, 50);
 
 	bool mouseDown;
-	Ball test = Ball::Ball(100, window.getSize().x / 2 - 100, window.getSize().y / 2 - 100);
+	Ball test = Ball(100, window.getSize().x / 2 - 100, window.getSize().y / 2 - 100);
 	test.setColour(sf::Color::Blue);
 
 	// run the program as long as the window is open
@@ -73,7 +73,6 @@ int main()
 
 		window.draw(test.draw());
 		window.display();
-
 	}
 
 	return 0;
