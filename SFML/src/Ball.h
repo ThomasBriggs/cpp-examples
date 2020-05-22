@@ -15,5 +15,7 @@ public:
 	void setX(int x);
 	void setY(int y);
 	void setPosition(int x, int y);
+	void setColour(sf::Color colour);
+	int getRadius();
 };
 

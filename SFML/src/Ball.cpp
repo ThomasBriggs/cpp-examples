@@ -26,3 +26,13 @@ void Ball::setPosition(int x, int y)
 	this->shape.setPosition(sf::Vector2f(x, y));
 }
 
+void Ball::setColour(sf::Color colour)
+{
+	this->shape.setFillColor(colour);
+}
+
+int Ball::getRadius()
+{
+	return this->radius;
+}
+

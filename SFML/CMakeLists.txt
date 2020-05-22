@@ -8,5 +8,4 @@ set(SOURCE_DIR ${CMAKE_HOME_DIRECTORY}/src)
 link_libraries(sfml-graphics)
 
 add_executable(Application src/main.cpp src/Ball.cpp)
-add_executable(Test src/test.cpp)
 
