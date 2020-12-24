@@ -81,7 +81,7 @@ int main(int argc, char const *argv[])
     // std::cout << printArr(arr, length) << std::endl;
     // mergeSort(arr, length);
     // std::cout << printArr(arr, length) << std::endl;
-    int size = 100000;
+    int size = 10000;
     int* arr = bigArray(size);
     auto start = std::chrono::high_resolution_clock::now();
     mergeSort(arr, size);
