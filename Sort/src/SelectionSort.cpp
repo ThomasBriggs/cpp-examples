@@ -1,4 +1,3 @@
-#include "Utility.h"
 #include <iostream>
 
 void SelectionSort(int *arr, int length)

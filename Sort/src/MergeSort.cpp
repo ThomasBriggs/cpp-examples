@@ -1,4 +1,3 @@
-#include "Utility.h"
 #include <iostream>
 
 void Merge(int *arr, int start, int middle, int end)

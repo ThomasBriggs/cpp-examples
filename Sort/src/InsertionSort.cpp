@@ -1,5 +1,4 @@
 #include <iostream>
-#include "Utility.h"
 
 void InsertionSort(int *arr, int length)
 {

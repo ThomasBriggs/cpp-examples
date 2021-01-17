@@ -68,10 +68,10 @@ int main(int argc, char const *argv[])
         amount = stoi(argv[1]);
     }
     
-    int* arr = bigArray(10000);
-    std::cout <<"Hello" << std::endl;
+    int size = 100000;
+    int* arr = bigArray(size);
     auto start = std::chrono::high_resolution_clock::now();
-    QuickSort(arr, 10000);
+    QuickSort(arr, size);
     auto stop = std::chrono::high_resolution_clock::now();
     std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(stop-start).count() << std::endl;
 

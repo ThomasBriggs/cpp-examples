@@ -189,9 +189,9 @@ int main(int argc, char** argv)
 {
     using namespace std;
 
-    BinaryTree<string> tree(vector<string>{"Kiki", "Haku", "San", "Chihiro", "Jiji", "Ponyo", "Satsuki"});
+    // BinaryTree<string> tree(vector<string>{"Kiki", "Haku", "San", "Chihiro", "Jiji", "Ponyo", "Satsuki"});
 
-    //    BinaryTree<int> tree(vector<int>{5, 2, 4, 3, 1});
+       BinaryTree<int> tree(vector<int>{5, 2, 4, 3, 1});
 
     tree.setMode(tree.PRE_ORDER);
     cout << "PRE_ORDER " << tree.toString() << endl;
