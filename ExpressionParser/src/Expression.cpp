@@ -16,23 +16,23 @@ Expression::~Expression()
 
 float Expression::eval()
 {
-    return Expression::evalRec(this);
+    return Expression::evalRec(*this);
 }
 
-float Expression::evalRec(const Expression *e)
+float Expression::evalRec(const Expression &e)
 {
-    switch (e->symbol[0])
+    switch (e.symbol[0])
     {
     case '+':
-        return evalRec(e->left) + evalRec(e->right);
+        return evalRec(*e.left) + evalRec(*e.right);
     case '-':
-        return evalRec(e->left) - evalRec(e->right);
+        return evalRec(*e.left) - evalRec(*e.right);
     case '*':
-        return evalRec(e->left) * evalRec(e->right);
+        return evalRec(*e.left) * evalRec(*e.right);
     case '/':
-        return evalRec(e->left) / evalRec(e->right);
+        return evalRec(*e.left) / evalRec(*e.right);
     default:
-        return std::stoi(e->symbol);
+        return std::stoi(e.symbol);
     }
 }
 

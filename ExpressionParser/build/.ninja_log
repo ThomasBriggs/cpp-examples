@@ -75,3 +75,17 @@
 490	608	1610962302077698412	ExpressionParser	2885a9b588aba56c
 0	473	1610962346453225439	CMakeFiles/ExpressionParser.dir/src/main.cpp.o	5bb262a7dd61a823
 473	582	1610962346561224289	ExpressionParser	2885a9b588aba56c
+1	471	1610966455455281999	CMakeFiles/ExpressionParser.dir/src/main.cpp.o	5bb262a7dd61a823
+1	915	1610966455899277596	CMakeFiles/ExpressionParserLib.dir/src/Expression.cpp.o	2c62236dcb297c3f
+915	937	1610966455919277398	libExpressionParserLib.a	b5ed8eca2c3b97bb
+937	1050	1610966456031276286	ExpressionParser	2885a9b588aba56c
+1	954	1610966574346098164	CMakeFiles/ExpressionParserLib.dir/src/Expression.cpp.o	2c62236dcb297c3f
+1	39	1610966580382037824	libExpressionParserLib.a	b5ed8eca2c3b97bb
+1	583	1610966621053630704	CMakeFiles/ExpressionParser.dir/src/main.cpp.o	5bb262a7dd61a823
+2	1002	1610966621473626495	CMakeFiles/ExpressionParserLib.dir/src/Expression.cpp.o	2c62236dcb297c3f
+1002	1021	1610966621493626295	libExpressionParserLib.a	b5ed8eca2c3b97bb
+1021	1150	1610966621621625012	ExpressionParser	2885a9b588aba56c
+0	473	1610968882004360714	CMakeFiles/ExpressionParser.dir/src/main.cpp.o	5bb262a7dd61a823
+0	858	1610968882392355609	CMakeFiles/ExpressionParserLib.dir/src/Expression.cpp.o	2c62236dcb297c3f
+858	876	1610968882412355346	libExpressionParserLib.a	b5ed8eca2c3b97bb
+876	989	1610968882520353924	ExpressionParser	2885a9b588aba56c
