@@ -1,6 +1,7 @@
 #include "Expression.hpp"
 #include <unordered_map>
 #include <iostream>
+#include <memory>
 
 Expression::Expression(std::string symbol, Expression *left, Expression *right)
     : symbol(symbol), left(left), right(right)
@@ -18,7 +19,7 @@ float Expression::eval()
     return Expression::evalRec(this);
 }
 
-float Expression::evalRec(Expression *e)
+float Expression::evalRec(const Expression *e)
 {
     switch (e->symbol[0])
     {
@@ -39,7 +40,7 @@ Expression Expression::parse(std::string s)
 {
     //Remove whitespace
     std::string output;
-    for (auto &&i : s)
+    for (auto &i : s)
     {
         if (i != ' ')
             output += i;

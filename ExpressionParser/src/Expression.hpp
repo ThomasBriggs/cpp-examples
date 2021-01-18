@@ -16,5 +16,5 @@ public:
 
 private:
     static Expression parseRec(std::string s);
-    static float evalRec(Expression *e);
+    static float evalRec(const Expression *e);
 };
