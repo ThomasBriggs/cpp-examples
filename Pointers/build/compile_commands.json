@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/thomas/Documents/cpp-examples/Pointers/build",
+  "command": "/bin/g++-9    -g   -o CMakeFiles/Pointers.dir/src/main.cpp.o -c /home/thomas/Documents/cpp-examples/Pointers/src/main.cpp",
+  "file": "/home/thomas/Documents/cpp-examples/Pointers/src/main.cpp"
+}
+]
