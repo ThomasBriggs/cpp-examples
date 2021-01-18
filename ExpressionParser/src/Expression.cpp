@@ -1,18 +1,8 @@
 #include "Expression.hpp"
 #include <unordered_map>
-#include <iostream>
-#include <memory>
 
 Expression::Expression(std::string symbol, Expression *left, Expression *right)
-    : symbol(symbol), left(left), right(right)
-{
-    std::cout << "Created an expression with symbol " << this->symbol << std::endl;
-}
-
-Expression::~Expression()
-{
-    std::cout << "Deleted expression with " << this->symbol << std::endl;
-}
+    : symbol(symbol), left(left), right(right) {}
 
 float Expression::eval()
 {
@@ -73,7 +63,7 @@ Expression Expression::parseRec(std::string s)
     }
     if (indexOfLowest == -1)
     {
-        return Expression(s, NULL, NULL);
+        return Expression(s, nullptr, nullptr);
     }
     else
     {
