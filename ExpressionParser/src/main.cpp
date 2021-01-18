@@ -1,10 +1,13 @@
 #include <iostream>
 #include "Expression.hpp"
+#include <string>
 
 int main(int argc, char const *argv[])
 {
-    //Parsed expression tree
-    Expression e = Expression::parse("+5");
-    std::cout << e.eval() << std::endl;
+    if (argc > 1)
+    {
+        Expression e = Expression::parse(argv[1]);
+        std::cout << e.eval() << '\n';
+    }
     return 0;
 }

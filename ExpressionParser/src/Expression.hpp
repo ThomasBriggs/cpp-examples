@@ -6,15 +6,20 @@
 class Expression
 {
 public:
-    std::string symbol;
-    std::shared_ptr<Expression> left;
-    std::shared_ptr<Expression> right;
-
     float eval();
     static Expression parse(std::string s);
+    enum class op_precedence
+    {
+        LOW,
+        MED,
+        NON_OP
+    };
 
 private:
-    Expression(std::string symbol, Expression *left, Expression *right);
-    static Expression parseRec(std::string s);
-    static float evalRec(const Expression &e);
+    Expression(std::string symbol, std::unique_ptr<Expression> &&left, std::unique_ptr<Expression> &&right);
+    static Expression parseRec(const std::string &s);
+    std::string symbol;
+    std::unique_ptr<Expression> left;
+    std::unique_ptr<Expression> right;
+    static constexpr op_precedence precedence(char ch);
 };

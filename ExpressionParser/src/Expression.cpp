@@ -1,74 +1,63 @@
 #include "Expression.hpp"
-#include <unordered_map>
+#include <algorithm>
 
-Expression::Expression(std::string symbol, Expression *left, Expression *right)
-    : symbol(symbol), left(left), right(right) {}
+Expression::Expression(std::string symbol, std::unique_ptr<Expression> &&left, std::unique_ptr<Expression> &&right)
+    : symbol(symbol), left(std::move(left)), right(std::move(right)) {}
 
 float Expression::eval()
 {
-    return Expression::evalRec(*this);
-}
-
-float Expression::evalRec(const Expression &e)
-{
-    switch (e.symbol[0])
+    switch (symbol[0])
     {
     case '+':
-        return evalRec(*e.left) + evalRec(*e.right);
+        return left->eval() + right->eval();
     case '-':
-        return evalRec(*e.left) - evalRec(*e.right);
+        return left->eval() - right->eval();
     case '*':
-        return evalRec(*e.left) * evalRec(*e.right);
+        return left->eval() * right->eval();
     case '/':
-        return evalRec(*e.left) / evalRec(*e.right);
+        return left->eval() / right->eval();
     default:
-        return std::stoi(e.symbol);
+        return std::stoi(symbol);
     }
 }
 
 Expression Expression::parse(std::string s)
 {
-    //Remove whitespace
-    std::string output;
-    for (auto &i : s)
-    {
-        if (i != ' ')
-            output += i;
-    }
-    return parseRec(output);
+    s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
+    return parseRec(s);
 }
 
-Expression Expression::parseRec(std::string s)
+
+
+constexpr Expression::op_precedence Expression::precedence(char ch)
 {
-    const std::unordered_map<char, int> precedence = {{'+', 1}, {'-', 1}, {'*', 10}, {'/', 10}};
-    int indexOfLowest = -1;
-    int i = 0;
-    for (auto &&j : s)
+    op_precedence val = op_precedence::NON_OP;
+    switch (ch)
     {
-        switch (j)
-        {
-        case '+':
-        case '-':
-        case '*':
-        case '/':
-            if (indexOfLowest == -1)
-                indexOfLowest = i;
-            else if (precedence.at(j) <= precedence.at(s[indexOfLowest]))
-                indexOfLowest = i;
-            break;
-        default:
-            break;
-        }
-        i++;
+    case '+':
+    case '-':
+        val = op_precedence::LOW;
+        break;
+    case '*':
+    case '/':
+        val = op_precedence::MED;
+    default:
+        break;
     }
-    if (indexOfLowest == -1)
-    {
-        return Expression(s, nullptr, nullptr);
-    }
-    else
-    {
-        return Expression(std::string(1, s[indexOfLowest]),
-                          new Expression(parseRec(s.substr(0, indexOfLowest))),
-                          new Expression(parseRec(s.substr(indexOfLowest + 1, s.length() - indexOfLowest - 1))));
-    }
+    return val;
 }
+
+Expression Expression::parseRec(const std::string &s) {
+    auto lowest{std::min_element(s.begin(), s.end(), 
+        [](const char &a, const char &b){
+            return precedence(a) < precedence(b); 
+        })};
+    if (precedence(*lowest) == op_precedence::NON_OP) {
+        return Expression(s, nullptr, nullptr);
+    } else {
+        return Expression(std::string(1, *lowest),
+                          std::make_unique<Expression>(parseRec(s.substr(0, lowest-s.begin()))),
+                          std::make_unique<Expression>(parseRec(s.substr(lowest-s.begin() + 1)))
+                          );
+    }
+};
