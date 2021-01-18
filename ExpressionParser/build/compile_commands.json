@@ -1,0 +1,13 @@
+[
+{
+  "directory": "/home/thomas/Documents/cpp-examples/ExpressionParser/build",
+  "command": "/bin/g++-9    -g   -o CMakeFiles/ExpressionParser.dir/src/main.cpp.o -c /home/thomas/Documents/cpp-examples/ExpressionParser/src/main.cpp",
+  "file": "/home/thomas/Documents/cpp-examples/ExpressionParser/src/main.cpp"
+},
+
+{
+  "directory": "/home/thomas/Documents/cpp-examples/ExpressionParser/build",
+  "command": "/bin/g++-9    -g   -o CMakeFiles/ExpressionParserLib.dir/src/Expression.cpp.o -c /home/thomas/Documents/cpp-examples/ExpressionParser/src/Expression.cpp",
+  "file": "/home/thomas/Documents/cpp-examples/ExpressionParser/src/Expression.cpp"
+}
+]
