@@ -4,9 +4,14 @@
 int main(int argc, char const *argv[])
 {
     Expression a = Expression::parse("5 * 5 / 5 - 5");
-    if (a.eval() == 0) {
+    float result = a.eval();
+    if (result == 0)
+    {
         return 0;
-    } else {
+    }
+    else
+    {
+        std::cout << result << '\n';
         return 1;
     }
 }

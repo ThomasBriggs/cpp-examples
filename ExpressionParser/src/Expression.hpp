@@ -13,8 +13,8 @@ public:
         LOW,
         MED,
         HIGH,
-        NON_OP,
-        BRACKET
+        BRACKET,
+        NON_OP
     };
 
 private:

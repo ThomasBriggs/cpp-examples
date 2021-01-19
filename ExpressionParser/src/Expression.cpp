@@ -27,7 +27,8 @@ float Expression::eval()
 Expression Expression::parse(std::string s)
 {
     s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
-    return parseRec(s);
+    Expression r = parseRec(s);
+    return r;
 }
 
 
@@ -58,17 +59,55 @@ constexpr Expression::op_precedence Expression::precedence(char ch)
     return val;
 }
 
+// Expression Expression::parseRec(const std::string &s) {
+//     std::string::const_iterator lowest = std::min_element(s.begin(), s.end(), 
+//         [](const char &a, const char &b){
+//             return precedence(a) < precedence(b); 
+//         });
+//     if (precedence(*lowest) == op_precedence::NON_OP) {
+//         return Expression(s, nullptr, nullptr);
+//     } else {
+//         return Expression(std::string(1, *lowest),
+//                           std::make_unique<Expression>(parseRec(s.substr(0, lowest-s.begin()))),
+//                           std::make_unique<Expression>(parseRec(s.substr(lowest-s.begin() + 1)))
+//                           );
+//     }
+// };
+
 Expression Expression::parseRec(const std::string &s) {
-    auto lowest = std::min_element(s.begin(), s.end(), 
-        [](const char &a, const char &b){
-            return precedence(a) < precedence(b); 
-        });
-    if (precedence(*lowest) == op_precedence::NON_OP) {
+    
+    int indexLowestOp = -1;
+    bool inBracket = false;
+    bool bracketFound = false;
+
+    for (size_t i = 0; i < s.length(); i++)
+    {
+        if (precedence(s[i]) == op_precedence::BRACKET) {
+            inBracket = !inBracket;
+            bracketFound = true;
+        }
+        if (!inBracket){
+            if (indexLowestOp == -1 && precedence(s[i]) != op_precedence::NON_OP
+                && precedence(s[i]) != op_precedence::BRACKET) {
+                indexLowestOp = i;
+            } else {
+                if (precedence(s[i]) <= precedence(s[indexLowestOp]) 
+                    && precedence(s[indexLowestOp]) != op_precedence::NON_OP
+                    && precedence(s[i]) != op_precedence::BRACKET)
+                    indexLowestOp = i;
+            }
+        }
+    }
+    
+    
+    if (bracketFound && indexLowestOp == -1) {
+        return parseRec(s.substr(1, s.length()-2));
+    } else if (indexLowestOp == -1) {
         return Expression(s, nullptr, nullptr);
     } else {
-        return Expression(std::string(1, *lowest),
-                          std::make_unique<Expression>(parseRec(s.substr(0, lowest-s.begin()))),
-                          std::make_unique<Expression>(parseRec(s.substr(lowest-s.begin() + 1)))
+        return Expression(std::string(1, s[indexLowestOp]),
+                          std::make_unique<Expression>(parseRec(s.substr(0, indexLowestOp))),
+                          std::make_unique<Expression>(parseRec(s.substr(indexLowestOp+1)))
                           );
     }
 };

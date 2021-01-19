@@ -8,4 +8,3 @@ set(LIB ExpressionParserLib)
 
 add_subdirectory(src)
 add_subdirectory(test)
-

@@ -2,8 +2,9 @@
 
 int main(int argc, char const *argv[])
 {
-    Expression a = Expression::parse("(2 + 3) * 2");
-    if (a.eval() == 10) {
+    Expression a = Expression::parse("(2 + 3)");
+    auto result = a.eval();
+    if (result == 5) {
         return 0;
     } else {
         return 1;
