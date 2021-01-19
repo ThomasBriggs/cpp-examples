@@ -12,12 +12,14 @@ public:
     {
         LOW,
         MED,
-        NON_OP
+        NON_OP,
+        BRACKET
     };
 
 private:
     Expression(std::string symbol, std::unique_ptr<Expression> &&left, std::unique_ptr<Expression> &&right);
     static Expression parseRec(const std::string &s);
+    // static Expression parseBracket(const std::string &s);
     std::string symbol;
     std::unique_ptr<Expression> left;
     std::unique_ptr<Expression> right;
