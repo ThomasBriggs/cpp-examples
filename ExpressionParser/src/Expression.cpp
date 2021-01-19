@@ -82,18 +82,19 @@ Expression Expression::parseRec(const std::string &s) {
 
     for (size_t i = 0; i < s.length(); i++)
     {
-        if (precedence(s[i]) == op_precedence::BRACKET) {
+        auto currentPres = precedence(s[i]);
+        if (currentPres == op_precedence::BRACKET) {
             inBracket = !inBracket;
             bracketFound = true;
         }
         if (!inBracket){
-            if (indexLowestOp == -1 && precedence(s[i]) != op_precedence::NON_OP
-                && precedence(s[i]) != op_precedence::BRACKET) {
+            if (indexLowestOp == -1 && currentPres != op_precedence::NON_OP
+                && currentPres != op_precedence::BRACKET) {
                 indexLowestOp = i;
             } else {
-                if (precedence(s[i]) <= precedence(s[indexLowestOp]) 
+                if (currentPres <= precedence(s[indexLowestOp]) 
                     && precedence(s[indexLowestOp]) != op_precedence::NON_OP
-                    && precedence(s[i]) != op_precedence::BRACKET)
+                    && currentPres != op_precedence::BRACKET)
                     indexLowestOp = i;
             }
         }
