@@ -1,5 +1,6 @@
 #include "Expression.hpp"
 #include <algorithm>
+#include <cmath>
 
 Expression::Expression(std::string symbol, std::unique_ptr<Expression> &&left, std::unique_ptr<Expression> &&right)
     : symbol(symbol), left(std::move(left)), right(std::move(right)) {}
@@ -16,6 +17,8 @@ float Expression::eval()
         return left->eval() * right->eval();
     case '/':
         return left->eval() / right->eval();
+    case '^':
+        return std::pow(left->eval(), right->eval());
     default:
         return std::stoi(symbol);
     }
@@ -41,6 +44,14 @@ constexpr Expression::op_precedence Expression::precedence(char ch)
     case '*':
     case '/':
         val = op_precedence::MED;
+        break;
+    case '^':
+        val = op_precedence::HIGH;
+        break;
+    case '(':
+    case ')':
+        val = op_precedence::BRACKET;
+        break;
     default:
         break;
     }
@@ -48,10 +59,10 @@ constexpr Expression::op_precedence Expression::precedence(char ch)
 }
 
 Expression Expression::parseRec(const std::string &s) {
-    auto lowest{std::min_element(s.begin(), s.end(), 
+    auto lowest = std::min_element(s.begin(), s.end(), 
         [](const char &a, const char &b){
             return precedence(a) < precedence(b); 
-        })};
+        });
     if (precedence(*lowest) == op_precedence::NON_OP) {
         return Expression(s, nullptr, nullptr);
     } else {

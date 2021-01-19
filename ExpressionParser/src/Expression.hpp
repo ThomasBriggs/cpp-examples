@@ -12,6 +12,7 @@ public:
     {
         LOW,
         MED,
+        HIGH,
         NON_OP,
         BRACKET
     };
