@@ -1,7 +1,7 @@
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
-add_executable(Test1 BasicParse1.cpp)
-add_executable(Test2 BasicParse2.cpp)
+add_executable(Test1 BasicParse.cpp)
+add_executable(Test2 ComplexParse.cpp)
 add_executable(Test3 BracketParse.cpp)
 add_executable(Test4 IndicieParse.cpp)
 
