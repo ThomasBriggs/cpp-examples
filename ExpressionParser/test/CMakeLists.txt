@@ -1,28 +1,29 @@
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
-add_executable(BasicParse BasicParse.cpp)
-add_executable(ComplexParse ComplexParse.cpp)
-add_executable(SingleBracketParse SingleBracketParse.cpp)
-add_executable(IndicieParse IndicieParse.cpp)
-add_executable(ComplexBracketParse ComplexBracketParse.cpp)
-add_executable(NestedBrackets NestedBrackets.cpp)
-
+# Test file
 add_executable(Test test.cpp)
-
-target_link_libraries(BasicParse ${LIB})
-target_link_libraries(ComplexParse ${LIB})
-target_link_libraries(SingleBracketParse ${LIB})
-target_link_libraries(IndicieParse ${LIB})
-target_link_libraries(ComplexBracketParse ${LIB})
-target_link_libraries(NestedBrackets ${LIB})
-
 target_link_libraries(Test ${LIB})
 
-add_test(BasicParse BasicParse)
-add_test(ComplexParse ComplexParse)
-add_test(SingleBracketParse SingleBracketParse)
-add_test(IndicieParse IndicieParse)
-add_test(ComplexBracketParse ComplexBracketParse)
-add_test(NestedBrackets NestedBrackets)
+# Unit Tests
+add_executable(Basic Basic.cpp)
+add_executable(Complex Complex.cpp)
+add_executable(SingleBracket SingleBracket.cpp)
+add_executable(Indicie Indicie.cpp)
+add_executable(ComplexBracket ComplexBracket.cpp)
+add_executable(NestedBrackets NestedBrackets.cpp)
+
+target_link_libraries(Basic ${LIB})
+target_link_libraries(Complex ${LIB})
+target_link_libraries(SingleBracket ${LIB})
+target_link_libraries(Indicie ${LIB})
+target_link_libraries(ComplexBracket ${LIB})
+target_link_libraries(NestedBrackets ${LIB})
+
+add_test(Basic_Parse Basic)
+add_test(Complex_Parse Complex)
+add_test(Single_Bracket_Parse SingleBracket)
+add_test(Indicie_Parse Indicie)
+add_test(Complex_Bracket_Parse ComplexBracket)
+add_test(Nested_Brackets_Parse NestedBrackets)
 
 
