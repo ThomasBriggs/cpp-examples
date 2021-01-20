@@ -20,7 +20,7 @@ float Expression::eval()
     case '^':
         return std::pow(left->eval(), right->eval());
     default:
-        return std::stoi(symbol);
+        return std::stof(symbol);
     }
 }
 
@@ -31,7 +31,7 @@ Expression Expression::parse(std::string s)
     return r;
 }
 
-constexpr Expression::op_precedence Expression::precedence(char ch)
+constexpr Expression::op_precedence Expression::precedence(const char &ch)
 {
     op_precedence val = op_precedence::NON_OP;
     switch (ch)
@@ -55,25 +55,27 @@ constexpr Expression::op_precedence Expression::precedence(char ch)
 
 Expression Expression::parseRec(const std::string &s)
 {
+    if (s.empty()) {
+        return Expression("0", nullptr, nullptr);
+    }
 
     std::string::const_iterator lowestOp = s.begin();
-    int bracketCount = 0;
+    int openBrackets = 0;
     for (std::string::const_iterator i = s.begin(); i != s.end(); i++)
     {
         switch (*i)
         {
         case '(':
-            bracketCount++;
+            openBrackets++;
             break;
         case ')':
-            bracketCount--;
+            openBrackets--;
             break;
         }
-        if (bracketCount == 0)
+        if (openBrackets == 0)
             if (precedence(*i) < precedence(*lowestOp))
                 lowestOp = i;
     }
-
     if (*lowestOp == '(')
     {
         return parseRec(s.substr(1, s.length() - 2));

@@ -1,5 +1,9 @@
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
+add_executable(UserTest UserTest.cpp)
+target_link_libraries(UserTest ${LIB})
+set_target_properties(UserTest PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
 # Test file
 add_executable(Test test.cpp)
 target_link_libraries(Test ${LIB})
@@ -21,8 +25,8 @@ target_link_libraries(NestedBrackets ${LIB})
 
 add_test(Basic_Parse Basic)
 add_test(Complex_Parse Complex)
-add_test(Single_Bracket_Parse SingleBracket)
 add_test(Indicie_Parse Indicie)
+add_test(Single_Bracket_Parse SingleBracket)
 add_test(Complex_Bracket_Parse ComplexBracket)
 add_test(Nested_Brackets_Parse NestedBrackets)
 

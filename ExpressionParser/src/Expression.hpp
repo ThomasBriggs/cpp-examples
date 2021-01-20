@@ -35,5 +35,5 @@ private:
     Expression(std::string symbol, std::unique_ptr<Expression> &&left, std::unique_ptr<Expression> &&right);
 
     static Expression parseRec(const std::string &s);
-    static constexpr op_precedence precedence(char ch);
+    static constexpr op_precedence precedence(const char &ch);
 };
