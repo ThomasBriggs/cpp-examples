@@ -58,15 +58,12 @@ Expression Expression::parseRec(const std::string &s)
 
     std::string::const_iterator lowestOp = s.begin();
     int bracketCount = 0;
-    bool bracketFound = false;
-
     for (std::string::const_iterator i = s.begin(); i != s.end(); i++)
     {
         switch (*i)
         {
         case '(':
             bracketCount++;
-            bracketFound = true;
             break;
         case ')':
             bracketCount--;
@@ -77,7 +74,7 @@ Expression Expression::parseRec(const std::string &s)
                 lowestOp = i;
     }
 
-    if (precedence(*lowestOp) == op_precedence::NON_OP && bracketFound)
+    if (*lowestOp == '(')
     {
         return parseRec(s.substr(1, s.length() - 2));
     }
