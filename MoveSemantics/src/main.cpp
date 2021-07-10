@@ -4,12 +4,11 @@
 
 class myString
 {
-private:
+public:
 
-    char* data;
+    char *data;
     uint32_t size;
 
-public:
     myString(const char *data)
     {
         std::cout << "Created a string" << '\n';
@@ -42,15 +41,16 @@ public:
         delete this->data;
     }
 
-    void print()
-    {
-        for (size_t i = 0; i < this->size; i++)
-        {
-            std::cout << this->data[i];
-        }
-        std::cout << '\n';
-    }
 };
+
+std::ostream &operator<<(std::ostream &os, const myString &string)
+{
+    for (size_t i = 0; i < string.size; i++)
+    {
+        os << string.data[i];
+    }
+    return os;
+}
 
 int main(int argc, char const *argv[])
 {
@@ -58,6 +58,6 @@ int main(int argc, char const *argv[])
     // myString s("Hello");
     // vector.emplace_back("Hello");
     vector.emplace_back("Hello");
-    vector.back().print();
+    std::cout << vector.back() << '\n';
     return 0;
 }
