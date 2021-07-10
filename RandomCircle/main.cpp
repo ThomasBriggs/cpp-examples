@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <iostream>
 #include "Circle.h"
 #include "RandomCircle.h"
 
@@ -12,6 +13,7 @@ int main(int argc, char const *argv[])
     std::vector<Circle> shapeList;
 
     randomCircle rCirc(window.getSize().x, window.getSize().y);
+
     sf::Clock clock;
 
     while (window.isOpen())
@@ -21,10 +23,20 @@ int main(int argc, char const *argv[])
         {
             if (e.type == sf::Event::Closed)
                 window.close();
+            if (e.type == sf::Event::MouseButtonPressed)
+            {
+                if (e.mouseButton.button == sf::Mouse::Right)
+                {
+                    auto view = sf::View();
+                    view.setSize(window.getView().getSize());
+                    view.setCenter(window.getView().getCenter());
+                    view.setRotation(window.getView().getRotation() + 10.f);
+                    window.setView(view);
+                }
+            }
         }
 
-        auto time = clock.getElapsedTime();
-        if (time.asMilliseconds() >= 100)
+        if (clock.getElapsedTime().asMilliseconds() >= 100)
         {
             rCirc.generateCircle(shapeList);
             clock.restart();
@@ -35,7 +47,6 @@ int main(int argc, char const *argv[])
         {
             window.draw(i);
         }
-
         window.display();
     }
     return 0;

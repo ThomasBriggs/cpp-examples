@@ -1,3 +1,0 @@
-/home/thomas/Documents/cpp-examples/GUI/build/CMakeFiles/rebuild_cache.dir
-/home/thomas/Documents/cpp-examples/GUI/build/CMakeFiles/edit_cache.dir
-/home/thomas/Documents/cpp-examples/GUI/build/CMakeFiles/GUI.dir
