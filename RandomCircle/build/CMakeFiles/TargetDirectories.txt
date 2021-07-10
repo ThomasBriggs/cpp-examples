@@ -1,4 +1,0 @@
-/home/thomas/Desktop/SFMLTest/build/CMakeFiles/edit_cache.dir
-/home/thomas/Desktop/SFMLTest/build/CMakeFiles/RandomCircle.dir
-/home/thomas/Desktop/SFMLTest/build/CMakeFiles/rebuild_cache.dir
-/home/thomas/Desktop/SFMLTest/build/CMakeFiles/SFMLTest.dir
