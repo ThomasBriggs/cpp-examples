@@ -1,0 +1,13 @@
+[
+{
+  "directory": "/home/thomas/Desktop/SFMLTest/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -DSFML_STATIC  -g   -std=gnu++2a -o CMakeFiles/RandomCircle.dir/RandomCircle.cpp.o -c /home/thomas/Desktop/SFMLTest/RandomCircle.cpp",
+  "file": "/home/thomas/Desktop/SFMLTest/RandomCircle.cpp"
+},
+
+{
+  "directory": "/home/thomas/Desktop/SFMLTest/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9  -DSFML_STATIC  -g   -std=gnu++2a -o CMakeFiles/SFMLTest.dir/main.cpp.o -c /home/thomas/Desktop/SFMLTest/main.cpp",
+  "file": "/home/thomas/Desktop/SFMLTest/main.cpp"
+}
+]
