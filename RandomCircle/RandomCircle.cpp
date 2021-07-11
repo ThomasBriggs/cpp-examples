@@ -1,7 +1,8 @@
 #include "RandomCircle.h"
 
-randomCircle::randomCircle(int x, int y)
+randomCircle::randomCircle(int x, int y, int minSize, int maxSize)
 {
+    this->size_dist =  std::uniform_int_distribution<int>(minSize, maxSize);
     this->x_dist = std::uniform_int_distribution<int>(0, x);
     this->y_dist = std::uniform_int_distribution<int>(0, y);
 }
@@ -21,13 +22,18 @@ uint32_t randomCircle::getColor()
     return this->color_dist(this->rng);
 }
 
-void randomCircle::generateCircle(std::vector<Circle> &list)
+void randomCircle::generateCircle()
 {
-    list.emplace_back(Circle());
-    Circle &c = list.back();
+    if (this->index > 199)
+        this->index = 0;
+    sf::CircleShape &c = this->shapeList.at(this->index);
     c.setRadius(this->getSize());
     c.setFillColor(sf::Color(this->getColor()));
     c.setPosition(this->getPos());
-    if (list.size() > 200)
-        list.erase(list.begin());
+    this->index++;
+}
+
+std::array<sf::CircleShape, 200> randomCircle::getShapeList()
+{
+    return this->shapeList;
 }
