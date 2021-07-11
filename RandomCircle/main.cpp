@@ -1,5 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include <vector>
 #include <iostream>
 #include "RandomCircle.h"
 
@@ -10,7 +9,7 @@ int main(int argc, char const *argv[])
     sf::RenderWindow window(sf::VideoMode(800, 600), "My Window", 7U, settings);
     window.setFramerateLimit(75);
 
-    randomCircle rCirc(window.getSize().x, window.getSize().y, 10, 25);
+    randomCircle rCirc(window.getSize().x, window.getSize().y, 10, 25, 200);
 
     sf::Clock clock;
 
