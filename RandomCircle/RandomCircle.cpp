@@ -1,6 +1,6 @@
 #include "RandomCircle.h"
 
-randomCircle::randomCircle(int x, int y, int minSize, int maxSize)
+randomCircle::randomCircle(int x, int y, int minSize, int maxSize, int num) : num{num}
 {
     this->size_dist =  std::uniform_int_distribution<int>(minSize, maxSize);
     this->x_dist = std::uniform_int_distribution<int>(0, x);
@@ -32,6 +32,7 @@ void randomCircle::generateCircle()
     c.setPosition(this->getPos());
     this->index++;
 }
+
 
 std::array<sf::CircleShape, 200> randomCircle::getShapeList()
 {

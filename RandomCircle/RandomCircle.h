@@ -9,6 +9,7 @@ class randomCircle
 private:
     std::array<sf::CircleShape, 200> shapeList;
     int index = 0;
+    int num;
     std::random_device rng = std::random_device();
     std::uniform_int_distribution<int> size_dist;
     std::uniform_int_distribution<int> x_dist;
@@ -19,7 +20,7 @@ private:
     uint32_t getColor();
 
 public:
-    randomCircle(int windowX, int windowY, int minSize, int maxSize);
+    randomCircle(int windowX, int windowY, int minSize, int maxSize, int num);
     void generateCircle();
     std::array<sf::CircleShape, 200> getShapeList();
 };
