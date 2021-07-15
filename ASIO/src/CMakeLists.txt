@@ -1,6 +1,10 @@
 add_library(asio INTERFACE)
-target_include_directories(asio INTERFACE /usr/include/)
-target_link_libraries(asio INTERFACE pthread)
+if (UNIX)
+    target_include_directories(asio INTERFACE /usr/include/)
+    target_link_libraries(asio INTERFACE pthread)
+else(WIN32)
+    target_include_directories(asio INTERFACE C:\\asio\\include)
+endif()
 
 add_executable(main main.cpp)
 target_link_libraries(main asio)
