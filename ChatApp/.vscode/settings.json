@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["asio"]
+  "cSpell.words": [
+    "asio"
+  ],
+  "C_Cpp.errorSquiggles": "Disabled"
 }
