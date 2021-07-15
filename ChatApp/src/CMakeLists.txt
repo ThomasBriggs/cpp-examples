@@ -1,0 +1,6 @@
+add_library(asio INTERFACE)
+target_include_directories(asio INTERFACE C:\\asio\\include)
+add_executable(server chat_server.cpp)
+add_executable(client chat_client.cpp)
+target_link_libraries(client asio)
+target_link_libraries(server asio)
