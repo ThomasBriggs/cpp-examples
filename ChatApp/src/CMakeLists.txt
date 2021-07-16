@@ -7,8 +7,9 @@ else(UNIX)
 endif()
 add_executable(server chat_server.cpp)
 add_executable(client chat_client.cpp)
+
 target_link_libraries(client asio)
 target_link_libraries(server asio)
 
-target_precompile_headers(client PUBLIC precomp.h)
-target_precompile_headers(server PUBLIC precomp.h)
+target_precompile_headers(client PUBLIC pch.h)
+target_precompile_headers(server REUSE_FROM client)
