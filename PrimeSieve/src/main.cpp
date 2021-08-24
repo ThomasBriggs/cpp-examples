@@ -2,11 +2,13 @@
 #include <vector>
 #include <cmath>
 #include <chrono>
+#include <fstream>
+#include <iterator>
 
-std::vector<int> primeSieveSqrt(long long amount)
+std::vector<unsigned long long> primeSieveSqrt(unsigned long long amount)
 {
     amount = (amount / 2);
-    std::vector<int> output;
+    std::vector<unsigned long long> output;
 
     if (amount < 1)
         return output;
@@ -15,11 +17,11 @@ std::vector<int> primeSieveSqrt(long long amount)
 
     std::vector<bool> sieveList(amount);
 
-    int j = 3;
+    size_t j = 3;
 
-    for (int i = 0; i < std::floor(std::sqrt(amount)); i++)
+    for (size_t i = 0; i < std::floor(std::sqrt(amount)); i++)
     {
-        if (sieveList[i] == 0)
+        if (!sieveList[i])
         {
             int k = j;
             while ((i + k) < amount)
@@ -34,54 +36,26 @@ std::vector<int> primeSieveSqrt(long long amount)
     j = 3;
     for (auto&& i : sieveList)
     {
-        if (i == 0)
+        if (!i)
             output.emplace_back(j);
         j += 2;
     }
     return output;
 }
 
-std::vector<int> primeSieve(long long amount)
-{
-    amount = (amount / 2);
-    std::vector<int> output;
-
-    if (amount < 1)
-        return output;
-
-    output.emplace_back(2);
-
-    std::vector<bool> sieveList(amount);
-
-    int j = 3;
-
-    for (int i = 0; i < amount; i++)
-    {
-        if (sieveList[i] == 0)
-        {
-            output.emplace_back(j);
-            int k = j;
-            while ((i + k) < amount)
-            {
-                sieveList[i + k] = 1;
-                k += j;
-            }
-        }
-        j += 2;
-    }
-    return output;
-}
 
 int main()
 {
-
-    long long limit = 1000000;
-    std::chrono::system_clock::time_point t1, t2;
-    t1 = std::chrono::high_resolution_clock::now();
+    auto t1 = std::chrono::high_resolution_clock::now();
     for (size_t i = 0; i < 5000; i++)
     {
-        primeSieveSqrt(limit);
+        auto v = primeSieveSqrt(1000000);
     }
-    t2 = std::chrono::high_resolution_clock::now();
-    std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << '\n';
+    
+    auto t2 = std::chrono::high_resolution_clock::now();
+    std::cout << "Time: " << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << "ms" << '\n';
+
+    // std::ofstream of("primes.txt");
+    // std::ostream_iterator<unsigned long long> oit(of, "\n");
+    // std::copy(v.begin(), v.end(), oit);
 }
