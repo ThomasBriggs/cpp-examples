@@ -9,7 +9,7 @@ public:
     Vertex(int data);
     int getData() const;
     void setData(int data);
-    void addEdge(Vertex& vertex) const ;
+    void addEdge(Vertex& vertex) const;
     void removeEdge(Vertex& vertex) const;
     bool adjacent(Vertex& vertex) const;
     const vertex_ptr_list_t& getEdges() const;

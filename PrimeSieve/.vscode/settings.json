@@ -1,9 +1,9 @@
 {
     "files.associations": {
+        "*.tcc": "cpp",
         "array": "cpp",
         "atomic": "cpp",
         "bit": "cpp",
-        "*.tcc": "cpp",
         "cctype": "cpp",
         "chrono": "cpp",
         "clocale": "cpp",
@@ -23,7 +23,6 @@
         "deque": "cpp",
         "list": "cpp",
         "map": "cpp",
-        "set": "cpp",
         "string": "cpp",
         "unordered_map": "cpp",
         "vector": "cpp",
@@ -61,9 +60,6 @@
         "cinttypes": "cpp",
         "typeinfo": "cpp",
         "valarray": "cpp",
-        "variant": "cpp",
-        "any": "cpp",
-        "optional": "cpp",
-        "iomanip": "cpp"
+        "variant": "cpp"
     }
 }
