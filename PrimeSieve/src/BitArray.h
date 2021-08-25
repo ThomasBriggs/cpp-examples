@@ -1,6 +1,6 @@
-#include <memory>
 #include <cmath>
 #include <cstring>
+#include <cstdint>
 
 class BitArray
 {
@@ -40,17 +40,18 @@ public:
 
     ~BitArray()
     {
-        delete [] this->array;
+        delete[] this->array;
     }
 
     inline size_t getSize() { return this->size; }
 
-    inline bool getBit(size_t i)
+    bool getBit(size_t i)
     {
-        return ((array[getBlock(i)] & (1 << getMask(i))) > 0);
+        short block = i >> 5; //Divide by 32
+        return ((array[block] & (1 << getMask(i))) > 0);
     }
 
-    inline void setBit(size_t i, bool n)
+    void setBit(size_t i, bool n)
     {
         n ? _setBit(i) : _unsetBit(i);
     }
