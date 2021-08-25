@@ -18,7 +18,7 @@ private:
         return (32 - (i % 32) - 1);
     }
 
-    inline static short block(size_t i) { return i >> 5; };
+    inline static size_t block(size_t i) { return i >> 5; };
 
     inline void _setBit(size_t i)
     {
@@ -47,7 +47,7 @@ public:
 
     inline bool getBit(size_t i)
     {
-        return ((array[block(i)] & (1 << shiftAmount(i))) > 0);
+        return (array[block(i)] & (1 << shiftAmount(i))) > 0;
     }
 
     inline void setBit(size_t i, bool n)
