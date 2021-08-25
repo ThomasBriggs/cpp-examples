@@ -1,41 +1,27 @@
+#include <memory>
 #include <cmath>
 #include <cstring>
-#include <cstdint>
 
 class BitArray
 {
 private:
-    size_t size;
+    size_t m_size;
     uint32_t* array;
 
-    inline static size_t getArraySize(size_t s)
+    inline static uint32_t shiftAmount(size_t i)
     {
-        return (s >> 5) + (s % 32 > 0);
+        return (32 - (i & 0x1F) - 1);
     }
 
-    inline static uint32_t getMask(size_t i)
-    {
-        return (32 - (i % 32) - 1);
-    }
-
-    inline static short getBlock(size_t i) { return i >> 5; };
-
-    inline void _setBit(size_t i)
-    {
-        array[getBlock(i)] |= 1 << getMask(i);
-    }
-
-    inline void _unsetBit(size_t i)
-    {
-        array[getBlock(i)] &= ~(1 << getMask(i));
-    }
+    inline static size_t block(size_t i) { return i >> 5; };
 
 public:
     BitArray(size_t size)
     {
-        this->size = size;
-        this->array = new uint32_t[getArraySize(size)];
-        std::memset(this->array, 0b00000000, sizeof(array[0]) * getArraySize(size));
+        this->m_size = size;
+        size_t s = (size >> 5) + ((size & 0x1F) > 0);
+        this->array = new uint32_t[s];
+        std::memset(this->array, 0b00000000, sizeof(array[0]) * s);
     }
 
     ~BitArray()
@@ -43,17 +29,16 @@ public:
         delete[] this->array;
     }
 
-    inline size_t getSize() { return this->size; }
+    inline size_t size() const { return this->m_size; }
 
-    bool getBit(size_t i)
+    inline bool getBit(size_t i) const
     {
-        short block = i >> 5; //Divide by 32
-        return ((array[block] & (1 << getMask(i))) > 0);
+        return (array[block(i)] & (1 << shiftAmount(i))) > 0;
     }
 
-    void setBit(size_t i, bool n)
+    inline void set(size_t i)
     {
-        n ? _setBit(i) : _unsetBit(i);
+        array[block(i)] |= 1 << shiftAmount(i);
     }
 };
 

@@ -1,58 +1,17 @@
 #include <iostream>
-#include <vector>
 #include <cmath>
 #include <chrono>
 #include <fstream>
 #include <iterator>
 #include "BitArray.h"
+#include <vector>
 
-std::vector<unsigned long long> primeSieveSqrt(unsigned long long amount)
+
+BitArray primeSieveSqrtBA(unsigned long long amount)
 {
-    amount = (amount / 2);
-    std::vector<unsigned long long> output;
-
+    amount = (amount >> 1);
     if (amount < 1)
-        return output;
-
-    output.emplace_back(2);
-
-    std::vector<bool> sieveList(amount);
-
-    size_t j = 3;
-
-    for (size_t i = 0; i < std::floor(std::sqrt(amount)); i++)
-    {
-        if (!sieveList[i])
-        {
-            int k = j;
-            while ((i + k) < amount)
-            {
-                sieveList[i + k] = 1;
-                k += j;
-            }
-        }
-        j += 2;
-    }
-
-    j = 3;
-    for (auto&& i : sieveList)
-    {
-        if (!i)
-            output.emplace_back(j);
-        j += 2;
-    }
-    return output;
-}
-
-std::vector<unsigned long long> primeSieveSqrtBA(unsigned long long amount)
-{
-    amount = (amount / 2);
-    std::vector<unsigned long long> output;
-
-    if (amount < 1)
-        return output;
-
-    output.emplace_back(2);
+        exit(1);
 
     BitArray sieveList(amount);
 
@@ -65,36 +24,52 @@ std::vector<unsigned long long> primeSieveSqrtBA(unsigned long long amount)
             int k = j;
             while ((i + k) < amount)
             {
-                sieveList.setBit((i + k), 1);
+                sieveList.set(i + k);
                 k += j;
             }
         }
         j += 2;
     }
+    return sieveList;
+}
 
-    j = 3;
-    for (size_t i = 0; i < sieveList.getSize(); i++)    
+std::vector<int> primesFromSeieve(const BitArray& b)
+{
+    std::vector<int> output;
+    output.reserve(b.size() * 2 / std::log2(b.size()));
+    output.emplace_back(2);
+    size_t n = 3;
+    for (size_t i = 0; i < b.size(); i++)
     {
-        if (!sieveList.getBit(i))
-            output.emplace_back(j);
-        j += 2;
+        if (!b.getBit(i))
+            output.push_back(n);
+        n += 2;
     }
     return output;
 }
 
+void time()
+{
+    size_t n = 10000;
+    size_t passes = 1000000;
+
+    {
+        auto t1 = std::chrono::high_resolution_clock::now();
+        for (size_t i = 0; i < passes; i++)
+        {
+            primeSieveSqrtBA(n);
+        }
+        auto t2 = std::chrono::high_resolution_clock::now();
+        std::cout << "Time: " << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << "ms" << '\n';
+    }
+}
+
 int main()
 {
-    // auto t1 = std::chrono::high_resolution_clock::now();
-    // for (size_t i = 0; i < 5000; i++)
-    // {
-    //     auto v = primeSieveSqrt(1000000);
-    // }
-    
-    // auto t2 = std::chrono::high_resolution_clock::now();
-    // std::cout << "Time: " << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << "ms" << '\n';
-
-    auto v = primeSieveSqrtBA(100);
-    std::ofstream of("primes.txt");
-    std::ostream_iterator<unsigned long long> oit(of, "\n");
-    std::copy(v.begin(), v.end(), oit);
+    auto s = primeSieveSqrtBA(100000000);
+    auto v = primesFromSeieve(s);
+    std::ofstream of("primesBA.txt");
+    std::ostream_iterator<int> it(of, "\n");
+    std::copy(v.begin(), v.end(), it);
+    return 0;
 }
