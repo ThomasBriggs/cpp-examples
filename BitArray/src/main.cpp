@@ -1,9 +1,11 @@
 #include <cstring>
+#include <bitset>
 #include <iostream>
+#include "BitArray.h"
 
 int main()
 {
-    uint32_t* i = new uint32_t[2];
-    memset(i, 0xFF, sizeof(i[0])*2);
-    std::cout << i[1] << '\n';
+    BitArray b(32);
+    b.setBit(30, 1);
+    std::cout << b.getBit(29) << '\n';
 }
