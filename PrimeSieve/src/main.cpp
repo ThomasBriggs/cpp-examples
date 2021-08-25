@@ -7,7 +7,7 @@
 #include <vector>
 
 
-BitArray primeSieveSqrtBA(unsigned long long amount)
+BitArray primeSieve(unsigned long long amount)
 {
     amount = (amount >> 1);
     if (amount < 1)
@@ -33,7 +33,7 @@ BitArray primeSieveSqrtBA(unsigned long long amount)
     return sieveList;
 }
 
-std::vector<int> primesFromSeieve(const BitArray& b)
+std::vector<int> primesFromSieve(const BitArray& b)
 {
     std::vector<int> output;
     output.reserve(b.size() * 2 / std::log2(b.size()));
@@ -50,14 +50,14 @@ std::vector<int> primesFromSeieve(const BitArray& b)
 
 void time()
 {
-    size_t n = 10000;
-    size_t passes = 1000000;
+    size_t n = 1000000;
+    size_t passes = 1000;
 
     {
         auto t1 = std::chrono::high_resolution_clock::now();
         for (size_t i = 0; i < passes; i++)
         {
-            primeSieveSqrtBA(n);
+            primeSieve(n);
         }
         auto t2 = std::chrono::high_resolution_clock::now();
         std::cout << "Time: " << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << "ms" << '\n';
@@ -66,10 +66,13 @@ void time()
 
 int main()
 {
-    auto s = primeSieveSqrtBA(100000000);
-    auto v = primesFromSeieve(s);
-    std::ofstream of("primesBA.txt");
-    std::ostream_iterator<int> it(of, "\n");
-    std::copy(v.begin(), v.end(), it);
+    // auto s = primeSieve(1000000000);
+    // auto v = primesFromSieve(s);
+    // std::ofstream of("primes.txt");
+    // std::ostream_iterator<int> it(of, "\n");
+    // std::copy(v.begin(), v.end(), it);
+
+    time();
+
     return 0;
 }
