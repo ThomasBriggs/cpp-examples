@@ -10,8 +10,8 @@
 BitArray primeSieve(unsigned long long amount)
 {
     amount = (amount >> 1);
-    if (amount < 1)
-        exit(1);
+    if (amount < 2)
+        return BitArray(0);
 
     BitArray sieveList(amount);
 
@@ -19,7 +19,7 @@ BitArray primeSieve(unsigned long long amount)
 
     for (size_t i = 0; i < std::floor(std::sqrt(amount)); i++)
     {
-        if (!sieveList.getBit(i))
+        if (!sieveList.get(i))
         {
             int k = j;
             while ((i + k) < amount)
@@ -41,7 +41,7 @@ std::vector<int> primesFromSieve(const BitArray& b)
     size_t n = 3;
     for (size_t i = 0; i < b.size(); i++)
     {
-        if (!b.getBit(i))
+        if (!b.get(i))
             output.push_back(n);
         n += 2;
     }
@@ -51,13 +51,24 @@ std::vector<int> primesFromSieve(const BitArray& b)
 void time()
 {
     size_t n = 1000000;
-    size_t passes = 1000;
+    size_t passes = 8000;
 
     {
         auto t1 = std::chrono::high_resolution_clock::now();
         for (size_t i = 0; i < passes; i++)
         {
             primeSieve(n);
+        }
+        auto t2 = std::chrono::high_resolution_clock::now();
+        std::cout << "Time: " << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << "ms" << '\n';
+    }
+
+    {
+        auto v = primeSieve(n);
+        auto t1 = std::chrono::high_resolution_clock::now();
+        for (size_t i = 0; i < passes; i++)
+        {
+            primesFromSieve(v);
         }
         auto t2 = std::chrono::high_resolution_clock::now();
         std::cout << "Time: " << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count() << "ms" << '\n';
