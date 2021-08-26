@@ -9,12 +9,11 @@
 
 BitArray primeSieve(unsigned long long amount)
 {
-    amount = (amount >> 1);
     if (amount < 2)
         return BitArray(0);
 
+    amount = (amount >> 1);
     BitArray sieveList(amount);
-
     size_t j = 3;
 
     for (size_t i = 0; i < std::floor(std::sqrt(amount)); i++)
@@ -75,15 +74,17 @@ void time()
     }
 }
 
+void writeToFile(int n, const char* filename)
+{
+    auto s = primeSieve(n);
+    auto v = primesFromSieve(s);
+    std::ofstream of(filename);
+    std::ostream_iterator<int> it(of, "\n");
+    std::copy(v.begin(), v.end(), it);
+}
+
 int main()
 {
-    // auto s = primeSieve(1000000000);
-    // auto v = primesFromSieve(s);
-    // std::ofstream of("primes.txt");
-    // std::ostream_iterator<int> it(of, "\n");
-    // std::copy(v.begin(), v.end(), it);
-
-    time();
-
-    return 0;
+    // time();
+    writeToFile(1000000000, "primes.txt");
 }
