@@ -1,12 +1,13 @@
-#include <memory>
 #include <cmath>
 #include <cstring>
+#include <vector>
+#include <cstdint>
 
-class BitArray
+class BitArrayVec
 {
 private:
     size_t m_size;
-    uint32_t* array;
+    std::vector<uint32_t> array;
 
     inline static size_t arraySize(size_t s)
     {
@@ -31,16 +32,10 @@ private:
     }
 
 public:
-    BitArray(size_t size)
+    BitArrayVec(size_t size)
     {
         this->m_size = size;
-        this->array = new uint32_t[arraySize(size)];
-        std::memset(this->array, 0b00000000, sizeof(array[0]) * arraySize(size));
-    }
-
-    ~BitArray()
-    {
-        delete[] array;
+        this->array = std::vector<uint32_t>(arraySize(size), 0);
     }
 
     inline size_t size() { return this->m_size; }

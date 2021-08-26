@@ -2,11 +2,11 @@
 #include <cmath>
 #include <cstring>
 
-class BitArray
+class BitArraySmart
 {
 private:
     size_t m_size;
-    uint32_t* array;
+    std::unique_ptr<uint32_t[]> array;
 
     inline static size_t arraySize(size_t s)
     {
@@ -22,25 +22,20 @@ private:
 
     inline void _setBit(size_t i)
     {
-        array[block(i)] |= 1 << shiftAmount(i);
+        array.get()[block(i)] |= 1 << shiftAmount(i);
     }
 
     inline void _unsetBit(size_t i)
     {
-        array[block(i)] &= ~(1 << shiftAmount(i));
+        array.get()[block(i)] &= ~(1 << shiftAmount(i));
     }
 
 public:
-    BitArray(size_t size)
+    BitArraySmart(size_t size)
     {
         this->m_size = size;
-        this->array = new uint32_t[arraySize(size)];
-        std::memset(this->array, 0b00000000, sizeof(array[0]) * arraySize(size));
-    }
-
-    ~BitArray()
-    {
-        delete[] array;
+        this->array = std::make_unique<uint32_t[]>(arraySize(size));
+        std::memset(this->array.get(), 0b00000000, sizeof(array[0]) * arraySize(size));
     }
 
     inline size_t size() { return this->m_size; }
