@@ -1,7 +1,7 @@
 #include <ncurses.h>
 #include <cstring>
 #include <vector>
-#include "menuItem.h"
+#include "MenuItem.h"
 
 void centerText(WINDOW* w, int y, char* s)
 {

@@ -1,4 +1,4 @@
-#include "menuItem.h"
+#include "MenuItem.h"
 
 
 MenuItem::MenuItem(WINDOW* win, std::string text, int y, int x)

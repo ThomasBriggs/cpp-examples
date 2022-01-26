@@ -1,5 +1,5 @@
 find_package(Curses REQUIRED)
 link_libraries(${CURSES_LIBRARIES})
-add_library(menu menuItem.cpp)
+add_library(menu MenuItem.cpp)
 link_libraries(menu)
 add_executable(main main.cpp)
