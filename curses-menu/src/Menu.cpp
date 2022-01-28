@@ -1,11 +1,21 @@
 #include "Menu.h"
 #include <string>
 #include <iostream>
+#include "CursesUtil.h"
 
-Menu::Menu(WINDOW* win, const char* title, Alighnemnt a) : win(win), title(title), align(a)
+Menu::Menu(WINDOW* win, const char* title, Alighnemnt a) : win(win), title(title)
 {
     box(win, 0, 0);
     mvwprintw(win, 0, 1, this->title.c_str());
+
+    if (a == CENTER){
+        this->alignFunc = centerText; 
+    } else if (a == RIGHT){
+        this->alignFunc = rightText;
+    } else{
+        this->alignFunc = leftText;
+    }
+    
 }
 
 
@@ -18,8 +28,8 @@ void Menu::draw(bool refresh)
 {
     if (!this->items.empty())
     {
-        for (auto&& i : this->items) { i.draw(); }
-        this->items[this->curSelected].drawActive();
+        for (auto&& i : this->items) { i.draw(this->alignFunc); }
+        this->items[this->curSelected].drawActive(this->alignFunc);
     }
     if (refresh) wrefresh(this->win);
 }

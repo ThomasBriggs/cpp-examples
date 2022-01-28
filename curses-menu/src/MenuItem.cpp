@@ -1,6 +1,4 @@
-#include "MenuItem.h"
-#include "CursesUtil.h"
-
+#include "Menu.h"
 
 MenuItem::MenuItem(WINDOW* win, std::string text, int y, int x, bool padding)
     : text(text), win(win), y(y), x(x)
@@ -12,11 +10,16 @@ MenuItem::MenuItem(WINDOW* win, std::string text, int y, int x, bool padding)
     }
 }
 
-void MenuItem::draw() { centerText(this->win, this->y, this->text.c_str()); }
+void MenuItem::draw(alignFunc func)
+{
+    func(this->win, this->y, this->text.c_str());
+}
 
-void MenuItem::drawActive()
+
+
+void MenuItem::drawActive(alignFunc func)
 {
     wattron(this->win, A_STANDOUT);
-    this->draw();
+    this->draw(func);
     wattroff(this->win, A_STANDOUT);
 }

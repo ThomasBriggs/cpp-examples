@@ -11,6 +11,12 @@ void centerText(WINDOW* w, int y, const char* s)
 
 void rightText(WINDOW * w, int y, const char* s)
 {
-    wmove(w, y, getmaxx(w) - std::strlen(s));
+    wmove(w, y, getmaxx(w) - std::strlen(s) - 1);
+    wprintw(w, s);
+}
+
+void leftText(WINDOW * w, int y, const char* s)
+{
+    wmove(w, y, 1);
     wprintw(w, s);
 }
