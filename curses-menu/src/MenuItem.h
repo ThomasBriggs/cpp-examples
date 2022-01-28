@@ -6,14 +6,11 @@ class MenuItem
 {
 private:
     std::string text;
-    bool active;
     WINDOW* win;
     int y, x;
 
 public:
-    MenuItem(WINDOW* win, std::string text, int y, int x);
-    void setActve(bool);
-    bool getActive();
-    bool toggleActive();
+    MenuItem(WINDOW* win, std::string text, int y, int x, bool padding = true);
     void draw();
+    void drawActive();
 };

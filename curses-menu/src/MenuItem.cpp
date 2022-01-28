@@ -1,30 +1,22 @@
 #include "MenuItem.h"
+#include "CursesUtil.h"
 
 
-MenuItem::MenuItem(WINDOW* win, std::string text, int y, int x)
-    : text(text), active(false), win(win), y(y), x(x)
-{}
-
-void MenuItem::setActve(bool state) { this->active = state; }
-
-bool MenuItem::getActive() { return this->active; }
-
-void MenuItem::draw()
+MenuItem::MenuItem(WINDOW* win, std::string text, int y, int x, bool padding)
+    : text(text), win(win), y(y), x(x)
 {
-    if (this->active)
+    if (padding)
     {
-        wattron(this->win, A_STANDOUT);
-        mvwprintw(this->win, this->y, this->x, this->text.c_str());
-        wattroff(this->win, A_STANDOUT);
-    }
-    else
-    {
-        mvwprintw(this->win, this->y, this->x, this->text.c_str());
+        this->text.insert(this->text.begin(), 4, ' ');
+        this->text.append("    ");
     }
 }
 
-bool MenuItem::toggleActive()
+void MenuItem::draw() { centerText(this->win, this->y, this->text.c_str()); }
+
+void MenuItem::drawActive()
 {
-    this->active = !this->active;
-    return this->active;
+    wattron(this->win, A_STANDOUT);
+    this->draw();
+    wattroff(this->win, A_STANDOUT);
 }
