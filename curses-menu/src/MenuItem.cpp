@@ -1,7 +1,7 @@
-#include "Menu.h"
+#include "MenuItem.h"
 
-MenuItem::MenuItem(WINDOW* win, std::string text, int y, int x, bool padding)
-    : text(text), win(win), y(y), x(x)
+MenuItem::MenuItem(WINDOW* win, std::string text, int y, int x,std::function<void()> event, bool padding)
+    : text(text), win(win), y(y), x(x), event(event)
 {
     if (padding)
     {
@@ -14,8 +14,6 @@ void MenuItem::draw(alignFunc func)
 {
     func(this->win, this->y, this->text.c_str());
 }
-
-
 
 void MenuItem::drawActive(alignFunc func)
 {
