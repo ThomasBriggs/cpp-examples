@@ -5,32 +5,17 @@
 #include <cctype>
 #include <algorithm>
 
-WINDOW* getInputWin()
-{
-    WINDOW* win = newwin(3, getmaxx(stdscr), 0, 0);
-    box(win, 0, 0);
-    wattron(win, A_BOLD);
-    mvwprintw(win, 0, 1, "Input");
-    wattroff(win, A_BOLD);
-    return win;
-}
 
-WINDOW* getPromptWin()
-{
-    WINDOW* win = newwin(getmaxy(stdscr) - 3, getmaxx(stdscr), 3, 0);
-    box(win, 0, 0);
-    wattron(win, A_BOLD);
-    mvwprintw(win, 0, 1, "Prompt");
-    wattroff(win, A_BOLD);
-    return win;
-}
 
 int main()
 {
     initscr();
+    use_default_colors();
+    assume_default_colors(-1, -1);
     cbreak();
     keypad(stdscr, true);
     noecho();
+    start_color();
 
     WINDOW* inputWin = getInputWin();
     WINDOW* promptWin = getPromptWin();
@@ -48,6 +33,7 @@ int main()
     wrefresh(promptWin);
 
     bool active = true;
+    wmove(inputWin, 1, 1);
     std::vector<std::string> inputWords(words.size());
     int input;
     int curWord = 0;
@@ -63,7 +49,7 @@ int main()
         {
             if (inputWords[curWord].empty()) curWord = std::max(0, curWord - 1);
             else (inputWords[curWord].pop_back());
-            displayInput(inputWin, inputWords[curWord]);
+            displayInput(inputWin,inputWords[curWord]);
         }
         else if (input == ' ')
         {
@@ -74,4 +60,3 @@ int main()
     }
     return 0;
 }
-
