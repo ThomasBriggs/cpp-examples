@@ -27,7 +27,7 @@ void displayInput(WINDOW* win, const std::string& s)
 
 void clearInput(WINDOW* win)
 {
-    wclear(win);
+    werase(win);
     drawInput(win);
 }
 
