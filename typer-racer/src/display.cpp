@@ -3,12 +3,17 @@
 
 void displayWords(WINDOW* win, std::vector<std::string> words, int currentWord)
 {
+    init_pair(5, COLOR_BLUE, -1);
     u_int min_y = 1, min_x = 1, max_x = getmaxx(win) - 1;
     wmove(win, min_y, min_x);
-    for (auto&& i : words)
+    auto&& curWord = words[0];
+    for(int i = 0; i < words.size(); i++)
     {
-        if (getcurx(win) + i.size() < max_x) { wprintw(win, (i + ' ').c_str()); }
-        else { mvwprintw(win, getcury(win) + 1, min_x, (i + ' ').c_str()); }
+        curWord = words[i];
+        if (!(getcurx(win) + curWord.size() < max_x)) { wmove(win, getcury(win) + 1, min_x); }
+        if (i == currentWord) wattron(win, COLOR_PAIR(5));
+        wprintw(win, (curWord + ' ').c_str());
+        wattroff(win, COLOR_PAIR(5));
     }
 }
 
