@@ -16,6 +16,7 @@ int main()
     keypad(stdscr, true);
     noecho();
     start_color();
+    curs_set(0);
 
     WINDOW* inputWin = getInputWin();
     WINDOW* promptWin = getPromptWin();
@@ -25,18 +26,19 @@ int main()
 
     auto words = getRandomWords
     (
-        "/home/thomas/Documents/cpp-examples/typer-racer/src/words.txt",
-        50
+        "/home/thomas/Documents/cpp-examples/typer-racer/src/top_1000.txt",
+        10
     );
 
-    displayWords(promptWin, words);
+    std::vector<std::string> inputWords(words.size());
+    int input;
+    int curWord = 0;
+    displayWords(promptWin, words, curWord);
     wrefresh(promptWin);
 
     bool active = true;
     wmove(inputWin, 1, 1);
-    std::vector<std::string> inputWords(words.size());
-    int input;
-    int curWord = 0;
+
     while (active)
     {
         input = getch();
@@ -49,14 +51,23 @@ int main()
         {
             if (inputWords[curWord].empty()) curWord = std::max(0, curWord - 1);
             else (inputWords[curWord].pop_back());
-            displayInput(inputWin,inputWords[curWord]);
+            displayWords(promptWin, words, curWord);
+            displayInput(inputWin, inputWords[curWord]);
         }
         else if (input == ' ')
         {
             curWord += 1;
+            if (curWord >= words.size())
+            {
+                active = true;
+                break;
+            }
             displayInput(inputWin, inputWords[curWord]);
+            displayWords(promptWin, words, curWord);
         }
         wrefresh(inputWin);
+        wrefresh(promptWin);
     }
+    endwin();
     return 0;
 }
