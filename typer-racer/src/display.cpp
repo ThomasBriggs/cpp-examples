@@ -1,19 +1,31 @@
 #include "display.h"
 #include <curses.h>
 
-void displayWords(WINDOW* win, std::vector<std::string> words, int currentWord)
+void displayWords(WINDOW* win, std::vector<std::string> words, int currentWord, std::vector<std::string> inputWords)
 {
     init_pair(5, COLOR_BLUE, -1);
+    init_pair(6, COLOR_RED, -1);
+    init_pair(7, COLOR_GREEN, -1);
+    short colour;
     u_int min_y = 1, min_x = 1, max_x = getmaxx(win) - 1;
     wmove(win, min_y, min_x);
     auto&& curWord = words[0];
     for(int i = 0; i < words.size(); i++)
     {
         curWord = words[i];
+        //Move cursor down if word won't fit on the line
         if (!(getcurx(win) + curWord.size() < max_x)) { wmove(win, getcury(win) + 1, min_x); }
-        if (i == currentWord) wattron(win, COLOR_PAIR(5));
+        if (i < currentWord)
+        {
+            if (inputWords[i] == words[i]) colour = 7;
+            else colour = 6;
+        }
+        //If the word to be displayed is the current word turn it blue
+        if (i == currentWord) colour = 5;
+        wattron(win, COLOR_PAIR(colour));
         wprintw(win, (curWord + ' ').c_str());
-        wattroff(win, COLOR_PAIR(5));
+        wattroff(win, COLOR_PAIR(colour));
+        colour = 0;
     }
 }
 

@@ -27,13 +27,13 @@ int main()
     auto words = getRandomWords
     (
         "/home/thomas/Documents/cpp-examples/typer-racer/src/top_1000.txt",
-        10
+        50
     );
 
     std::vector<std::string> inputWords(words.size());
     int input;
     int curWord = 0;
-    displayWords(promptWin, words, curWord);
+    displayWords(promptWin, words, curWord, inputWords);
     wrefresh(promptWin);
 
     bool active = true;
@@ -51,7 +51,7 @@ int main()
         {
             if (inputWords[curWord].empty()) curWord = std::max(0, curWord - 1);
             else (inputWords[curWord].pop_back());
-            displayWords(promptWin, words, curWord);
+            displayWords(promptWin, words, curWord, inputWords);
             displayInput(inputWin, inputWords[curWord]);
         }
         else if (input == ' ')
@@ -63,7 +63,7 @@ int main()
                 break;
             }
             displayInput(inputWin, inputWords[curWord]);
-            displayWords(promptWin, words, curWord);
+            displayWords(promptWin, words, curWord, inputWords);
         }
         wrefresh(inputWin);
         wrefresh(promptWin);
