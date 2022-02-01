@@ -4,8 +4,8 @@
 #include "file.h"
 #include <cctype>
 #include <algorithm>
-
-
+#include <chrono>
+#include <cmath>
 
 int main()
 {
@@ -18,6 +18,8 @@ int main()
     start_color();
     curs_set(0);
 
+    u_short numWords = 50;
+
     WINDOW* inputWin = getInputWin();
     WINDOW* promptWin = getPromptWin();
     refresh();
@@ -26,8 +28,8 @@ int main()
 
     auto words = getRandomWords
     (
-        "/home/thomas/Documents/cpp-examples/typer-racer/src/top_1000.txt",
-        50
+        "/home/thomas/Documents/cpp-examples/typer-racer/src/top_100.txt",
+        numWords
     );
 
     std::vector<std::string> inputWords(words.size());
@@ -38,12 +40,17 @@ int main()
 
     bool active = true;
     wmove(inputWin, 1, 1);
+    typedef std::chrono::system_clock clock;
+    clock::time_point start = clock::time_point::min();
 
+    u_int charsTyped = 0;
     while (active)
     {
         input = getch();
+        if (start == clock::time_point::min()) start = clock::now();
         if (std::isalpha(input) || std::isdigit(input))
         {
+            charsTyped++;
             inputWords[curWord] += input;
             displayInput(inputWin, inputWords[curWord]);
         }
@@ -68,6 +75,11 @@ int main()
         wrefresh(inputWin);
         wrefresh(promptWin);
     }
+    clock::time_point stop = clock::now();
     endwin();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+    std::cout << "Time: " << duration.count() << "ms" << '\n';
+    std::cout << "WPM (chars): " << std::roundf(((charsTyped / 5) / (duration.count() / 60000.f)) * 100) / 100 << '\n';
+    std::cout << "WPM (words): " << std::roundf(numWords / (duration.count() / 60000.f) * 100) / 100 << '\n';
     return 0;
 }
