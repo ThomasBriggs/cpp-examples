@@ -10,7 +10,7 @@ void displayWords(WINDOW* win, std::vector<std::string> words, int currentWord, 
     u_int min_y = 1, min_x = 1, max_x = getmaxx(win) - 1;
     wmove(win, min_y, min_x);
     auto&& curWord = words[0];
-    for(int i = 0; i < words.size(); i++)
+    for(size_t i = 0; i < words.size(); i++)
     {
         curWord = words[i];
         //Move cursor down if word won't fit on the line

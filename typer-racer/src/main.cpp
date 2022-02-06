@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <chrono>
 #include <cmath>
+#include "util.h"
 
 int main()
 {
@@ -81,5 +82,6 @@ int main()
     std::cout << "Time: " << duration.count() << "ms" << '\n';
     std::cout << "WPM (chars): " << std::roundf(((charsTyped / 5) / (duration.count() / 60000.f)) * 100) / 100 << '\n';
     std::cout << "WPM (words): " << std::roundf(numWords / (duration.count() / 60000.f) * 100) / 100 << '\n';
+    std::cout << "Accuracy: " << getAccuracy(inputWords, words) << '%' << '\n';
     return 0;
 }

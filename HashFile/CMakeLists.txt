@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.20.0)
 
 #Project name and version
-project("typer-racer")
+project("HashFile")
 
 #C++ standard for the project
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -19,7 +19,6 @@ if(${COMPILER_WARNINGS})
         add_compile_options(-Wall -Wextra)
     endif()
 endif()
-
 
 #Main Source Directory
 add_subdirectory(src)
