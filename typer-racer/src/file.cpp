@@ -7,7 +7,7 @@
 size_t getLineCount(std::ifstream& file)
 {
     auto pos = file.tellg();
-    int number_of_lines = std::count(
+    unsigned int number_of_lines = std::count(
         std::istreambuf_iterator<char>(file),
         std::istreambuf_iterator<char>(),
         '\n'
@@ -22,7 +22,7 @@ std::vector<std::string> getRandomWords(const std::string& f, u_short n)
 
     std::ifstream file(f);
     size_t number_of_lines = getLineCount(file);
-    if (n > number_of_lines) std::__throw_out_of_range("Not enough words in the file");
+    if (n > number_of_lines) { std::__throw_out_of_range("Not enough words in the file"); }
 
     file.seekg(0);
     std::vector<std::string> words(n);
