@@ -29,7 +29,7 @@ int main()
 
     auto words = getRandomWords
     (
-        "/home/thomas/Documents/cpp-examples/typer-racer/src/top_100.txt",
+        "/home/thomas/Documents/cpp-examples/typer-racer/src/top_1000.txt",
         numWords
     );
 
