@@ -4,3 +4,6 @@ message(STATUS CURLPATH:${CURL_INCLUDE_DIRS})
 
 add_executable(main main.cpp)
 target_link_libraries(main CURL::libcurl)
+
+add_executable(raii raii.cpp)
+target_link_libraries(raii CURL::libcurl)
